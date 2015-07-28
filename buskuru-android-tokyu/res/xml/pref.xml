@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory android:title="@string/category_title">
+		<CheckBoxPreference
+			android:key="@string/key_notice_preference"
+			android:title="@string/notice_title"
+			android:summary="@string/notice_summary"
+			android:summaryOn="接近情報の通知予約を使用する"
+			android:summaryOff="接近情報の通知予約を使用しない" />
+		<ListPreference
+			android:key="@string/key_list_preference"
+			android:title="@string/list_title"
+			android:summary="@string/list_summary"
+			android:dialogTitle="@string/list_dialogtitle"
+			android:entries="@array/list_entries"
+			android:entryValues="@array/list_entryvalues"
+			android:defaultValue="30" />
+		<ListPreference
+			android:key="@string/key_notice_target_preference"
+			android:title="@string/notice_target_title"/>
+		<Preference
+			android:key="@string/key_monitor_preference"
+			android:title="@string/monitor_title"/>
+		<CheckBoxPreference
+			android:key="@string/key_notice_holiday_preference"
+			android:title="@string/notice_holiday_title"
+			android:summary="@string/notice_holiday_summary"
+			android:summaryOn="土日祝も監視する"
+			android:summaryOff="土日祝は監視しない" />
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/category_title_2">
+	    <Preference
+	        android:key="@string/key_version_preference"
+	        android:icon="@drawable/icon" />
+	</PreferenceCategory>
+</PreferenceScreen>

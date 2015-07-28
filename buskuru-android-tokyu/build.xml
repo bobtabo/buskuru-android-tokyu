@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<project basedir="." default="release" name="busnavi-android-tokyu-build"
+	xmlns:artifact="antlib:org.apache.maven.artifact.ant">
+    
+	<property file="build.properties" />
+
+	<target name="release" description="リリースファイルを作成する">
+        <exec executable="cmd">
+            <arg value="/c"/>
+            <arg value="release.bat"/>
+        </exec>
+		<delete>
+		    <fileset dir="./">
+		        <include name="*.apk"/>
+		    </fileset>
+		</delete>
+<!-- 		<delete dir="./target"/> -->
+		<mkdir dir="./target"/>
+		<copy todir=".">
+			<fileset dir="./target">
+				<include name="*-zipped.apk"/>
+			</fileset>
+			<mapper type="merge" from="*" to="./release/${destFile}"/>
+		</copy>
+<!--
+		<exec executable="cmd">
+            <arg value="/c"/>
+            <arg value="zipalign -v 4 buskuru.apk buskuru-zipalign.apk"/>
+        </exec>
+        <delete file="buskuru.apk" />
+        <rename src="buskuru-zipalign.apk" dest="buskuru.apk"/>
+-->
+   </target>
+	
+<!--
+		<target name="deploy" depends="release" description="実機orエミュレータへデプロイする">
+        <sequential>
+            <artifact:mvn pom="pom.xml" fork="yes" failonerror="true">
+                <arg value="android:deploy"/>
+            </artifact:mvn>
+        </sequential>
+    </target>
+-->
+
+</project>

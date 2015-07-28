@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- アプリケーション -->
+    <string name="app_name">バスくる for 東急</string>
+    <string name="copyright">Copyright (c) 2011 BobTabo. All Rights Reserved.</string>
+	<string name="new_version_info">バージョンアップしました。\n最新版に更新して下さい。</string>
+	
+	<!-- ﾌﾟリファレンス -->
+	<string name="key_favorite">favorite</string>
+	
+	<!-- サーバ接続 -->
+    <string name="tokyu_station">http://tokyu.bus-location.jp/blsys/navis?VID=sss&amp;EID=st&amp;PID=ssp&amp;RID=1&amp;KWD={0}&amp;LCK=&amp;PRM=&amp;DSN=&amp;ASN=&amp;FDSN=0&amp;FASN=0&amp;SCT=2</string>
+    <string name="tokyu_station_search">http://tokyu.bus-location.jp/blsys/navis?VID=ssp&amp;EID=nt&amp;PRM=&amp;SCT=2&amp;CIT=ssp&amp;RID=&amp;FDSN=1&amp;FASN=0&amp;DSN={0}&amp;ASN=</string>
+    <string name="tokyu_navigation">http://tokyu.bus-location.jp/blsys/navis?VID=lsc&amp;EID=nt&amp;PRM=&amp;SCT=2&amp;DSN={0}&amp;ASN={1}&amp;FDSN=1&amp;FASN=1&amp;DSMK={2}&amp;ASMK={3}</string>
+    <string name="tokyu_time_station_search">http://www.tokyubus.co.jp/keitai/i/index.cgi?disp_history=01111213&amp;mmdd={0}%2F{1}&amp;folder=1&amp;search_type=1&amp;search_str={2}</string>
+    <string name="tokyu_time_url">http://www.tokyubus.co.jp/keitai/i</string>
+    <string name="tokyu_time_bus_url">http://www.tokyubus.co.jp/keitai/i/index.cgi?{0}&amp;mmdd={1}%2F{2}&amp;hh={3}&amp;mm={4}</string>
+    <string name="play_store_url">https://play.google.com/store/apps/details?id=org.buskuru.tokyu</string>
+    <string name="market_url">market://details?id=org.buskuru.tokyu</string>
+    
+    <!-- アラート通知設定 -->
+    <string name="category_title">通知予約設定</string>
+    
+    <string name="key_notice_preference">key_notice</string>
+    <string name="notice_title">接近情報を通知する</string>
+    <string name="notice_summary">notice_summary</string>
+
+    <string name="key_list_preference">key_list</string>
+    <string name="pref_screen">pref</string>
+    <string name="list_title">通知間隔</string>
+    <string name="list_summary">list_summary</string>
+    <string name="list_dialogtitle">通知間隔</string>
+    <string name="list_entries">list_entries</string>
+    <string name="list_entryvalues">list_entryvalues</string>
+	
+	<string name="key_notice_target_preference">key_notice_target</string>
+	<string name="notice_target_title">接近情報の監視対象設定</string>
+	
+	<string name="key_monitor_preference">key_monitor</string>
+	<string name="monitor_title">接近情報の監視時間設定</string>
+
+    <string name="key_notice_holiday_preference">key_notice_holiday</string>
+    <string name="notice_holiday_title">土日祝も監視する</string>
+    <string name="notice_holiday_summary">holiday_summary</string>
+    
+    <string name="category_title_2">バージョン情報</string>
+	<string name="key_version_preference">key_version</string>
+	
+    <!-- Admob -->
+    <string name="ad_unit_id">ca-app-pub-6138499036075105/4293593871</string>
+    <string name="ad_unit_id_interstitial">ca-app-pub-6138499036075105/2946017870</string>
+</resources>

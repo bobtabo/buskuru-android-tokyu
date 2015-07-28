@@ -1,0 +1,53 @@
+/*
+ * BusKuru is a Busnavi program developed by BobTabo.
+ * 
+ * Copyright (c) 2011 BobTabo. All Rights Reserved.
+ */
+package org.buskuru.tokyu.parse;
+
+/* $Id: AccessNoticeParser.java 187 2014-05-26 15:58:55Z nagashiba $ */
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * 接近情報HTMLを解析するクラスです。
+ * 
+ * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
+ */
+public class AccessNoticeParser extends BaseHtmlParser {
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public List<Map<String, String>> parseList(String html) {
+		List<Map<String, String>> result = new ArrayList<Map<String, String>>();
+		result.add(parse(html));
+		return result;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Map<String, String> parse(String html) {
+		Map<String, String> result = null;
+		try {
+			int index = html.indexOf("分待");
+			if (index > -1) {
+				html = html.substring(index - 2, index + "分待".length());
+				html = html.replaceAll("分待", "").trim();
+				result = new HashMap<String, String>();
+				result.put("notice", html);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+}

@@ -1,0 +1,2 @@
+del /s /q "./bobtabo.android.keystore"
+keytool -genkey -keystore bobtabo.android.keystore -keyalg RSA -keysize 2048 -validity 10000 -alias BobTaboAndroid -storepass buhibuhi -dname "cn=BobTabo, ou=Tech Unit, o=BobTabo, c=JA"

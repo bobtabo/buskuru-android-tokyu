@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+		package="org.buskuru.tokyu"
+		android:installLocation="auto"
+		android:versionCode="20"
+		android:versionName="1.2.3">
+	
+	<uses-sdk android:minSdkVersion="9" android:targetSdkVersion="17" />
+    
+	<!-- registration_idをアプリケーションサーバに送信するために、インターネット接続を許可する -->  
+	<uses-permission android:name="android.permission.INTERNET" />  
+
+	<!-- スリープ解除を許可する -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+
+	<!-- スクリーンロック解除を許可する -->
+	<uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+	<!-- アカウント取得を許可する -->
+	<!-- <uses-permission android:name="android.permission.GET_ACCOUNTS" /> -->
+	
+	<!-- バイブレータ制御を許可する -->
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	
+	<!-- 起動通知を許可する -->
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	
+	<uses-permission android:name="android.permission.READ_LOGS" />
+	
+	<application android:icon="@drawable/icon"
+	    	android:label="@string/app_name"
+	    	android:name=".BusNaviApplication"
+	    	android:allowBackup="false"
+	    	android:debuggable="false">
+	    
+		<!-- スタート画面 -->
+		<activity android:name=".activity.StartActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait">
+    		<intent-filter>
+        		<action android:name="android.intent.action.MAIN" />
+        		<category android:name="android.intent.category.LAUNCHER" />
+    		</intent-filter>
+		</activity>
+	    
+		<!-- アクティビティグループ -->
+		<activity android:name=".activity.ParentActivityGroup"
+            android:label="@string/app_name"
+			android:screenOrientation="portrait">
+		</activity>
+	    
+		<!-- メイン画面 -->
+		<activity android:name=".activity.MainActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait">
+		</activity>
+
+		<!-- 経路検索 -->
+		<activity android:name=".activity.RouteActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+
+		<!-- 50音検索 -->
+		<activity android:name=".activity.StationActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+
+		<!-- 停留所選択 -->
+		<activity android:name=".activity.StationListActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"
+			android:noHistory="true"/>
+
+		<!-- 停留所履歴 -->
+		<activity android:name=".activity.StationHistoryActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+
+		<!-- 接近情報画面 -->
+		<activity android:name=".activity.NavigationActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"
+			android:noHistory="true"/>
+
+		<!-- 設定画面 -->
+		<activity android:name=".activity.MainPreferenceActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+		
+		<!-- 時刻表メイン画面 -->
+		<activity android:name=".activity.TimeTableMainActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+				
+		<!-- 時刻表バス選択画面 -->
+		<activity android:name=".activity.TimeTableBusActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"
+			android:noHistory="true"/>
+
+		<!-- 時刻表画面 -->
+		<activity android:name=".activity.TimeTableActivity"
+			android:label="@string/app_name"
+			android:screenOrientation="portrait"/>
+		
+		<!-- 接近通知サービスを自動起動するレシーバー -->
+		<receiver android:name=".BootReceiver" android:enabled="true">
+			<intent-filter>
+				<action android:name="android.intent.action.BOOT_COMPLETED" />
+			</intent-filter>
+		</receiver>
+
+		<!-- 接近通知サービス -->
+		<service android:name=".service.AccessNoticeService" android:enabled="true" />
+		
+		<!-- Admob -->
+		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+
+<!--         <provider android:name="TokenProvider" android:authorities="de.telekom.tsc.tokenprovider"/> -->
+        
+	</application>
+
+</manifest>

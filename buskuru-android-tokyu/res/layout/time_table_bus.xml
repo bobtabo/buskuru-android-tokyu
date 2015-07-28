@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<TextView
+		android:id="@+id/TextView01"
+		android:text="バス停"
+		android:layout_width="fill_parent"
+		android:layout_alignParentTop="true"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/station"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@+id/TextView01"
+		android:background="#FFFFFF"
+		android:textSize="24sp"
+		android:textColor="#000000"/>
+	
+	<TextView
+		android:id="@+id/TextView02"
+		android:text="行き先を選択してください"
+		android:layout_width="fill_parent"
+		android:layout_below="@+id/station"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="20dip"/>
+	
+	<LinearLayout
+	    android:id="@+id/LinearLayout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_below="@+id/TextView02"
+	    android:orientation="horizontal" >
+
+		<ListView
+		    android:id="@+id/ListView01"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent" />
+
+	</LinearLayout>
+		
+</RelativeLayout>
