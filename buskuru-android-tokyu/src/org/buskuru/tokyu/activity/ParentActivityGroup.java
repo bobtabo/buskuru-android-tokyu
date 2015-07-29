@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -18,6 +18,10 @@ import org.buskuru.tokyu.listener.AdListener;
 import org.buskuru.tokyu.util.MapUtil;
 import org.buskuru.tokyu.util.StringUtil;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityGroup;
@@ -33,13 +37,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.InterstitialAd;
-
 /**
  * アクティビティを管理するクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 408 $ $Date: 2015-01-27 02:14:34 +0900 (火, 27 1 2015) $
  */
@@ -66,8 +66,8 @@ public class ParentActivityGroup extends ActivityGroup implements OnClickListene
 	}
 
 	/**
-	 * アクティビティを表示すます。
-	 * 
+	 * アクティビティを表示します。
+	 *
 	 * @param activityClass
 	 *            アクティビティクラス
 	 * @param flags
@@ -78,8 +78,8 @@ public class ParentActivityGroup extends ActivityGroup implements OnClickListene
 	}
 
 	/**
-	 * アクティビティを表示すます。
-	 * 
+	 * アクティビティを表示します。
+	 *
 	 * @param activityClass
 	 *            アクティビティクラス
 	 * @param flags
@@ -97,8 +97,8 @@ public class ParentActivityGroup extends ActivityGroup implements OnClickListene
 	}
 
 	/**
-	 * アクティビティを表示すます。
-	 * 
+	 * アクティビティを表示します。
+	 *
 	 * @param activityClass
 	 *            アクティビティクラス
 	 * @param flags
