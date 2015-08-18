@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.buskuru.tokyu.db.DatabaseOpenHelper;
+import org.buskuru.tokyu.db.DatabaseHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
 import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.RouteDto;
@@ -76,7 +76,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 		// データ移行処理
 		if (!migration) {
-			DatabaseOpenHelper db = new DatabaseOpenHelper(getApplicationContext());
+			DatabaseHelper db = new DatabaseHelper(getApplicationContext());
 			db.getWritableDatabase();
 			db.migration(getApplicationContext());
 			db.close();
