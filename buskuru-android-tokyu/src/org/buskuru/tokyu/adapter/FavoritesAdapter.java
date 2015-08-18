@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.adapter;
@@ -14,8 +14,8 @@ import java.util.Map;
 
 import org.buskuru.tokyu.Constants;
 import org.buskuru.tokyu.R;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.service.AccessNoticeService;
 import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.StringUtil;
@@ -35,17 +35,18 @@ import android.widget.TextView;
 
 /**
  * お気に入りリストのアダプタクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 416 $ $Date: 2015-01-28 13:21:02 +0900 (水, 28 1 2015) $
  */
 public class FavoritesAdapter extends ArrayAdapter<String> implements Constants {
 	private LayoutInflater mInflater;
 	private List<Button> buttonHolder = new LinkedList<Button>();
+	private FavoritesLogic favoritesLogic;
 
 	/**
 	 * コンストラクタ。
-	 * 
+	 *
 	 * @param context
 	 *            コンテキスト
 	 * @param textViewResourceId
@@ -55,6 +56,7 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 		super(context, textViewResourceId);
 
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		favoritesLogic = new FavoritesLogic(context);
 	}
 
 	/**
@@ -114,8 +116,7 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 								getContext().stopService(intent);
 							}
 						} else {
-							Favorites entity = FavoritesTableHelper.getEntityByName(v.getContext(),
-									item);
+							Favorites entity = favoritesLogic.getEntityByName(item);
 							sp.edit().putBoolean(ACCESS_NOW, true).commit();
 							sp.edit().putString(ACCESS_NOW_URL, entity.getUrl()).commit();
 							sp.edit()
@@ -150,7 +151,7 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 
 	/**
 	 * 直近バス確認ボタンを設定します。
-	 * 
+	 *
 	 * @param position
 	 *            チェック対象インデックス
 	 */

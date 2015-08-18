@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.annotation.UseMenu;
-import org.buskuru.tokyu.db.TimeTableFavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.TimeTableFavorites;
+import org.buskuru.tokyu.db.logic.TimeTableFavoritesLogic;
 import org.buskuru.tokyu.parse.TimeTableParser;
 import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.MessageUtil;
@@ -35,7 +35,7 @@ import android.webkit.WebViewClient;
 
 /**
  * 時刻表画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
@@ -49,6 +49,8 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 	private String loadUrl = null;
 	private String nextTime = null;
 
+	private TimeTableFavoritesLogic timeTableFavoritesLogic;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -56,6 +58,8 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.time_table);
+
+		timeTableFavoritesLogic = new TimeTableFavoritesLogic(this);
 
 		progressDialog = new ProgressDialog(TimeTableActivity.this);
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -106,7 +110,7 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 		entity.setName(getIntent().getStringExtra("station"));
 		entity.setUrl(loadUrl);
 		entity.setNextTime(nextTime);
-		TimeTableFavoritesTableHelper.insertOrUpdate(this, entity);
+		timeTableFavoritesLogic.insertOrUpdate(entity);
 		return true;
 	}
 
@@ -183,7 +187,7 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */

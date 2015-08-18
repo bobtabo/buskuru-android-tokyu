@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu;
@@ -12,8 +12,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.buskuru.tokyu.db.DatabaseOpenHelper;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.RouteDto;
 import org.buskuru.tokyu.dto.StationFromToDto;
 import org.buskuru.tokyu.dto.TimeTableDto;
@@ -29,7 +29,7 @@ import android.preference.PreferenceManager;
 
 /**
  * バスナビアプリケーションクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 358 $ $Date: 2015-01-25 17:48:58 +0900 (日, 25 1 2015) $
  */
@@ -59,6 +59,8 @@ public class BusNaviApplication extends Application implements Constants {
 	/** 時刻表検索であることを意味します */
 	public boolean fromTimeTable = false;
 
+	private FavoritesLogic favoritesLogic;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -82,11 +84,12 @@ public class BusNaviApplication extends Application implements Constants {
 		}
 
 		// お気に入り修正処理
+		favoritesLogic = new FavoritesLogic(getApplicationContext());
 		if (!migration2) {
-			List<Favorites> list = FavoritesTableHelper.findAll(getApplicationContext());
+			List<Favorites> list = favoritesLogic.findAll();
 			for (Favorites entity : list) {
 				entity.setName(StringUtil.remove(entity.getName(), "【東急バス】"));
-				FavoritesTableHelper.insertOrUpdate(getApplicationContext(), entity);
+				favoritesLogic.insertOrUpdate(entity);
 			}
 			sp.edit().putBoolean("migration2", true).commit();
 		}
@@ -112,7 +115,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * 経路情報を取得します。
-	 * 
+	 *
 	 * @return 経路情報
 	 */
 	public RouteDto getRouteDto() {
@@ -121,7 +124,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * 経路情報（時刻表）を取得します。
-	 * 
+	 *
 	 * @return 経路情報（時刻表）
 	 */
 	public RouteDto getRouteTimeDto() {
@@ -130,7 +133,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * バス停情報を取得します。
-	 * 
+	 *
 	 * @return stationFromToDto バス停情報
 	 */
 	public StationFromToDto getStationFromToDto() {
@@ -139,7 +142,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * 時刻表情報を取得します。
-	 * 
+	 *
 	 * @return timeTableDto 時刻表情報
 	 */
 	public TimeTableDto getTimeTableDto() {
@@ -148,7 +151,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * １つ前に処理されたアクティビティを取得します。
-	 * 
+	 *
 	 * @return target １つ前に処理されたアクティビティ
 	 */
 	public Activity getTarget() {
@@ -157,7 +160,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * １つ前に処理されたアクティビティを設定します。
-	 * 
+	 *
 	 * @param target
 	 *            １つ前に処理されたアクティビティ
 	 */
@@ -167,7 +170,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * １つ前に処理されたアクティビティクラスを取得します。
-	 * 
+	 *
 	 * @return targetClass １つ前に処理されたアクティビティクラス
 	 */
 	public Class<?> getTargetClass() {
@@ -176,7 +179,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * １つ前に処理されたアクティビティクラス名を取得します。
-	 * 
+	 *
 	 * @return targetClassName １つ前に処理されたアクティビティクラス名
 	 */
 	public String getTargetClassName() {
@@ -185,7 +188,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * バス会社IDを取得します。
-	 * 
+	 *
 	 * @return バス会社ID
 	 */
 	public Integer getBusId() {
@@ -194,7 +197,7 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/**
 	 * バス会社名を取得します。
-	 * 
+	 *
 	 * @param busId
 	 *            バス会社ID
 	 * @return バス会社名

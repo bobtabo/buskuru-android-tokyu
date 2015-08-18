@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -21,8 +21,8 @@ import java.util.concurrent.ExecutionException;
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.adapter.TimeTableFavoritesAdapter;
-import org.buskuru.tokyu.db.TimeTableFavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.TimeTableFavorites;
+import org.buskuru.tokyu.db.logic.TimeTableFavoritesLogic;
 import org.buskuru.tokyu.dto.RouteDto;
 import org.buskuru.tokyu.parse.TimeTableFromParser;
 import org.buskuru.tokyu.parse.TimeTableStationParser;
@@ -55,7 +55,7 @@ import android.widget.TextView;
 
 /**
  * 時刻表メイン画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 332 $ $Date: 2015-01-21 01:12:04 +0900 (水, 21 1 2015) $
  */
@@ -69,6 +69,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	private ListView listView;
 
 	private Handler handler = new Handler();
+	private TimeTableFavoritesLogic timeTableFavoritesLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -77,6 +78,8 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.time_table_main);
+
+		timeTableFavoritesLogic = new TimeTableFavoritesLogic(this);
 
 		fromStation = (TextView) findViewById(R.id.fromStation);
 		fromSyllabary = (Button) findViewById(R.id.fromSyllabary);
@@ -150,8 +153,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 						if (which == 0) {
-							TimeTableFavoritesTableHelper.deleteById(getApplicationContext(),
-									(Integer) map.get("id"));
+							timeTableFavoritesLogic.deleteById((Integer) map.get("id"));
 							TimeTableFavoritesAdapter adapter = (TimeTableFavoritesAdapter) listView
 									.getAdapter();
 							adapter.getData().remove(paramInt);
@@ -171,8 +173,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
 			long paramLong) {
 		Map<String, Object> map = (Map<String, Object>) listView.getItemAtPosition(paramInt);
-		TimeTableFavorites entity = TimeTableFavoritesTableHelper.getEntityById(this,
-				(Integer) map.get("id"));
+		TimeTableFavorites entity = timeTableFavoritesLogic.getEntityById((Integer) map.get("id"));
 
 		String param = HttpUtil.getQuery(entity.getUrl(), "mmdd", "hh", "mm");
 
@@ -242,7 +243,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */
@@ -279,7 +280,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 	/**
 	 * 時刻表アクティビティを開始します。
-	 * 
+	 *
 	 * @param station
 	 *            バス停名
 	 */
@@ -296,13 +297,13 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 	/**
 	 * お気に入りマップのリストを取得します。
-	 * 
+	 *
 	 * @return お気に入りマップのリスト
 	 */
 	private List<Map<String, Object>> getFavoritesMapList() {
 		List<Map<String, Object>> result = new LinkedList<Map<String, Object>>();
 
-		List<TimeTableFavorites> list = TimeTableFavoritesTableHelper.findAll(this);
+		List<TimeTableFavorites> list = timeTableFavoritesLogic.findAll();
 		for (TimeTableFavorites entity : list) {
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", entity.getId());

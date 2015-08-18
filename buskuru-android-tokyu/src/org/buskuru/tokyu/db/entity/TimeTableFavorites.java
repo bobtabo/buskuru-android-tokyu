@@ -1,26 +1,34 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.db.entity;
 
-/* $Id: TimeTableFavorites.java 187 2014-05-26 15:58:55Z nagashiba $ */
+/* $Id: TimeTableFavorites.java 469 2015-02-04 16:36:32Z nagashiba $ */
 
 import java.io.Serializable;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * お気に入りを格納するエンティティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
+ * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
+@DatabaseTable(tableName = "time_table_favorites")
 public class TimeTableFavorites implements Serializable {
 	private static final long serialVersionUID = 3802274130239232736L;
 
+	@DatabaseField(generatedId = true)
 	private Integer id;
+	@DatabaseField(columnName = "name", canBeNull = false)
 	private String name;
+	@DatabaseField(columnName = "url", canBeNull = false)
 	private String url;
+	@DatabaseField(columnName = "next_time", canBeNull = false)
 	private String nextTime;
 
 	/**

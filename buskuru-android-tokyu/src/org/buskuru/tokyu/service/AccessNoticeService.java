@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.service;
@@ -13,8 +13,8 @@ import java.util.Map;
 
 import org.buskuru.tokyu.Constants;
 import org.buskuru.tokyu.R;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.parse.AccessNoticeParser;
 import org.buskuru.tokyu.tools.Holiday;
 import org.buskuru.tokyu.util.DateUtil;
@@ -52,7 +52,7 @@ import android.widget.Toast;
 
 /**
  * バス接近情報を通知するサービスクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
@@ -67,6 +67,8 @@ public class AccessNoticeService extends Service implements Constants {
 	private KeyguardLock keylock;
 
 	private boolean analyzeFlag = false;
+
+	private FavoritesLogic favoritesLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -151,7 +153,7 @@ public class AccessNoticeService extends Service implements Constants {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private Runnable task = new Runnable() {
 		@Override
@@ -193,7 +195,7 @@ public class AccessNoticeService extends Service implements Constants {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private final IBinder binder = new Binder() {
 
@@ -208,7 +210,7 @@ public class AccessNoticeService extends Service implements Constants {
 	};
 
 	/**
-	 * 
+	 *
 	 */
 	private void checkNoticeContent() {
 		SharedPreferences sp = PreferenceManager
@@ -220,7 +222,11 @@ public class AccessNoticeService extends Service implements Constants {
 		if (accessNow) {
 			url = sp.getString(ACCESS_NOW_URL, StringUtil.EMPTY);
 		} else {
-			Favorites entity = FavoritesTableHelper.getEntityByNotice(this);
+			if (favoritesLogic == null) {
+				favoritesLogic = new FavoritesLogic(this);
+			}
+
+			Favorites entity = favoritesLogic.getEntityByNotice();
 
 			if (entity == null) {
 				return;
@@ -264,7 +270,7 @@ public class AccessNoticeService extends Service implements Constants {
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */

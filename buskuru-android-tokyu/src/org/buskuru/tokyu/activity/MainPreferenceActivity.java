@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -12,8 +12,8 @@ import java.util.List;
 
 import org.buskuru.tokyu.Constants;
 import org.buskuru.tokyu.R;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.service.AccessNoticeService;
 import org.buskuru.tokyu.util.ArrayUtil;
 import org.buskuru.tokyu.util.CollectionUtil;
@@ -48,7 +48,7 @@ import android.widget.TimePicker;
 
 /**
  * 設定画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
@@ -61,6 +61,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 	private Preference preferrence;
 	private CheckBoxPreference noticeHolidayPreference;
 	private Preference versionPreferrence;
+	private FavoritesLogic favoritesLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -70,6 +71,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.preferences);
+		favoritesLogic = new FavoritesLogic(getApplicationContext());
 		addPreferencesFromResource(R.xml.pref);
 	}
 
@@ -270,7 +272,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 
 	/**
 	 * 通知間隔サマリを設定します。
-	 * 
+	 *
 	 * @param value
 	 *            設定値
 	 */
@@ -281,7 +283,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 
 	/**
 	 * 通知対象サマリを設定します。
-	 * 
+	 *
 	 * @param value
 	 *            設定値
 	 */
@@ -290,8 +292,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 		if (value != null) {
 			int index = targetPreferrence.findIndexOfValue((String) value);
 			targetPreferrence.setSummary(targetPreferrence.getEntries()[index]);
-			FavoritesTableHelper.updateNoticeTarget(getApplicationContext(),
-					new Integer(value.toString()));
+			favoritesLogic.updateNoticeTarget(new Integer(value.toString()));
 		} else {
 			targetPreferrence.setSummary(StringUtil.EMPTY);
 		}
@@ -299,7 +300,7 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 
 	/**
 	 * 監視時間サマリを設定します。
-	 * 
+	 *
 	 * @param hour1
 	 *            開始時
 	 * @param minute1
@@ -318,13 +319,13 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private String[] getNoticeTargetEntries() {
 		String[] result = null;
 
-		List<Favorites> list = FavoritesTableHelper.findAll(this);
+		List<Favorites> list = favoritesLogic.findAll();
 		if (CollectionUtil.isNotEmpty(list)) {
 			result = new String[list.size()];
 			for (int i = 0; i < list.size(); i++) {
@@ -336,13 +337,13 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private String[] getNoticeTargetEntryValues() {
 		String[] result = null;
 
-		List<Favorites> list = FavoritesTableHelper.findAll(this);
+		List<Favorites> list = favoritesLogic.findAll();
 		if (CollectionUtil.isNotEmpty(list)) {
 			result = new String[list.size()];
 			for (int i = 0; i < list.size(); i++) {
@@ -354,11 +355,11 @@ public class MainPreferenceActivity extends PreferenceActivity implements
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	private String getNoticeTargetDefaultValue() {
-		Favorites entity = FavoritesTableHelper.getEntityByNotice(this);
+		Favorites entity = favoritesLogic.getEntityByNotice();
 		if (entity == null) {
 			return null;
 		}

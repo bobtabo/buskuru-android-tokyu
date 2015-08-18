@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -13,8 +13,8 @@ import java.util.Map;
 
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
-import org.buskuru.tokyu.db.StationHistoryTableHelper;
 import org.buskuru.tokyu.db.entity.StationHistory;
+import org.buskuru.tokyu.db.logic.StationHistoryLogic;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -30,15 +30,15 @@ import android.widget.ListView;
 
 /**
  * 停留所履歴を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StationHistoryActivity extends BaseActivity implements OnItemClickListener,
 		OnItemLongClickListener {
 	private ListView listView;
-
 	// private String fromto;
+	private StationHistoryLogic stationHistoryLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -47,6 +47,8 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.station_history);
+
+		stationHistoryLogic = new StationHistoryLogic(this);
 
 		getBusNaviApplication().getStationFromToDto().setFromto(
 				getIntent().getStringExtra("fromto"));
@@ -60,7 +62,7 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 		StationHistory parameter = new StationHistory();
 		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-		List<StationHistory> list = StationHistoryTableHelper.getListByFromto(this, parameter);
+		List<StationHistory> list = stationHistoryLogic.getListByFromto(parameter);
 		for (StationHistory entity : list) {
 			adapter.add(entity.getName());
 		}
@@ -77,7 +79,7 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
 		parameter.setName((String) listView.getItemAtPosition(paramInt));
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-		StationHistory result = StationHistoryTableHelper.getEntityByName(this, parameter);
+		StationHistory result = stationHistoryLogic.getEntityByName(parameter);
 
 		Map<String, String> resultMap = new LinkedHashMap<String, String>();
 		resultMap.put("name", result.getName());
@@ -111,7 +113,7 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 					parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
 					parameter.setName((String) name);
 					parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-					StationHistoryTableHelper.deleteByName(StationHistoryActivity.this, parameter);
+					stationHistoryLogic.deleteByName(parameter);
 					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
 					adapter.remove((String) name);
 					adapter.notifyDataSetChanged();

@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -13,8 +13,8 @@ import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.adapter.FavoritesAdapter;
 import org.buskuru.tokyu.annotation.UseMenu;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.NavigationDto;
 import org.buskuru.tokyu.util.MessageUtil;
 import org.buskuru.tokyu.util.StringUtil;
@@ -39,7 +39,7 @@ import android.widget.TextView.BufferType;
 
 /**
  * トップ画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
@@ -47,6 +47,7 @@ import android.widget.TextView.BufferType;
 public class MainActivity extends BaseActivity implements OnItemClickListener,
 		OnItemLongClickListener {
 	private ListView listView;
+	private FavoritesLogic favoritesLogic;
 	private Handler handler = new Handler();
 
 	/**
@@ -56,6 +57,8 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		favoritesLogic = new FavoritesLogic(this);
 
 		listView = (ListView) findViewById(R.id.ListView01);
 
@@ -77,7 +80,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 
 		ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
 		adapter.clear();
-		List<Favorites> list = FavoritesTableHelper.findAll(this);
+		List<Favorites> list = favoritesLogic.findAll();
 		for (Favorites entity : list) {
 			adapter.add(entity.getName());
 		}
@@ -91,8 +94,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 	@Override
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
 			long paramLong) {
-		Favorites entity = FavoritesTableHelper.getEntityByName(this,
-				(String) listView.getItemAtPosition(paramInt));
+		Favorites entity = favoritesLogic.getEntityByName((String) listView.getItemAtPosition(paramInt));
 
 		NavigationDto navigationDto = new NavigationDto();
 		navigationDto.setFromId(entity.getFromId());
@@ -134,11 +136,10 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 								MessageUtil.openError(MainActivity.this, "お気に入り名を入力して下さい。");
 								return;
 							}
-							Favorites entity = FavoritesTableHelper.getEntityByName(
-									MainActivity.this, (String) name);
+							Favorites entity = favoritesLogic.getEntityByName((String) name);
 							if (!editName.equals(entity.getName())) {
 								entity.setName(editName);
-								FavoritesTableHelper.insertOrUpdate(MainActivity.this, entity);
+								favoritesLogic.insertOrUpdate(entity);
 								ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView
 										.getAdapter();
 								int position = adapter.getPosition((String) name);
@@ -157,7 +158,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 					entity.setBusId(((BusNaviApplication) MainActivity.this.getApplication())
 							.getBusId());
 					entity.setName((String) name);
-					FavoritesTableHelper.deleteByName(MainActivity.this, entity);
+					favoritesLogic.deleteByName(entity);
 					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
 					adapter.remove((String) name);
 					adapter.notifyDataSetChanged();

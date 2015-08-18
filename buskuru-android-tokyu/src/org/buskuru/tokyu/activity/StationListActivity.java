@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -15,8 +15,8 @@ import java.util.concurrent.ExecutionException;
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.adapter.StationListAdapter;
-import org.buskuru.tokyu.db.StationHistoryTableHelper;
 import org.buskuru.tokyu.db.entity.StationHistory;
+import org.buskuru.tokyu.db.logic.StationHistoryLogic;
 import org.buskuru.tokyu.exceptions.StationNotFoundException;
 import org.buskuru.tokyu.parse.StationSelectParser;
 import org.buskuru.tokyu.util.HttpUtil;
@@ -33,12 +33,13 @@ import android.widget.ListView;
 
 /**
  * 停留所選択を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StationListActivity extends BaseActivity implements OnItemClickListener {
 	private ListView listView;
+	private StationHistoryLogic stationHistoryLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -47,6 +48,8 @@ public class StationListActivity extends BaseActivity implements OnItemClickList
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.station_list);
+
+		stationHistoryLogic = new StationHistoryLogic(this);
 
 		listView = (ListView) this.findViewById(R.id.ListView01);
 		listView.setOnItemClickListener(this);
@@ -83,7 +86,7 @@ public class StationListActivity extends BaseActivity implements OnItemClickList
 		parameter.setStationId(Integer.valueOf(stationMap.get("link")));
 		parameter.setName(stationMap.get("name"));
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().fromto);
-		StationHistoryTableHelper.insertOrUpdate(getApplicationContext(), parameter);
+		stationHistoryLogic.insertOrUpdate(parameter);
 
 		if (getBusNaviApplication().fromTimeTable) {
 			((ParentActivityGroup) getParent()).showActivity(TimeTableMainActivity.class,
@@ -113,7 +116,7 @@ public class StationListActivity extends BaseActivity implements OnItemClickList
 
 	/**
 	 * バス停マップを変換します。
-	 * 
+	 *
 	 * @param oldStationMap
 	 *            バス停名、バス停名のマップ
 	 * @return バス停ID、バス停名のマップ

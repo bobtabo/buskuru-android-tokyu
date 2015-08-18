@@ -5,7 +5,7 @@
  */
 package org.buskuru.tokyu.db.entity;
 
-/* $Id: StationHistory.java 469 2015-02-04 16:36:32Z nagashiba $ */
+/* $Id: TimeTableStationHistory.java 469 2015-02-04 16:36:32Z nagashiba $ */
 
 import java.io.Serializable;
 
@@ -18,8 +18,8 @@ import com.j256.ormlite.table.DatabaseTable;
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
-@DatabaseTable(tableName = "station_history")
-public class StationHistory implements Serializable {
+@DatabaseTable(tableName = "time_table_station_history")
+public class TimeTableStationHistory implements Serializable {
 	private static final long serialVersionUID = 5658100078081111662L;
 
 	@DatabaseField(generatedId = true)
@@ -30,8 +30,10 @@ public class StationHistory implements Serializable {
 	private Integer stationId;
 	@DatabaseField(columnName = "name", canBeNull = false)
 	private String name;
-	@DatabaseField(columnName = "fromto", canBeNull = false)
-	private String fromto;
+	@DatabaseField(columnName = "abbr", canBeNull = true)
+	private String abbr;
+	@DatabaseField(columnName = "url", canBeNull = false)
+	private String url;
 
 	/**
 	 * @return id
@@ -94,17 +96,32 @@ public class StationHistory implements Serializable {
 	}
 
 	/**
-	 * @return fromto
+	 * @return abbr
 	 */
-	public String getFromto() {
-		return fromto;
+	public String getAbbr() {
+		return abbr;
 	}
 
 	/**
-	 * @param fromto
-	 *            セットする fromto
+	 * @param abbr
+	 *            セットする abbr
 	 */
-	public void setFromto(String fromto) {
-		this.fromto = fromto;
+	public void setAbbr(String abbr) {
+		this.abbr = abbr;
+	}
+
+	/**
+	 * @return url
+	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * @param url
+	 *            セットする url
+	 */
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.adapter;
@@ -13,8 +13,8 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import org.buskuru.tokyu.R;
-import org.buskuru.tokyu.db.TimeTableFavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.TimeTableFavorites;
+import org.buskuru.tokyu.db.logic.TimeTableFavoritesLogic;
 import org.buskuru.tokyu.parse.TimeTableNextParser;
 import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.HttpUtil;
@@ -30,7 +30,7 @@ import android.widget.TwoLineListItem;
 
 /**
  * 停留所リストのアダプタクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 331 $ $Date: 2015-01-21 01:07:41 +0900 (水, 21 1 2015) $
  */
@@ -39,10 +39,11 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 
 	private List<? extends Map<String, ?>> _data;
 	private Context _context;
+	private TimeTableFavoritesLogic timeTableFavoritesLogic;
 
 	/**
 	 * コンストラクタ。
-	 * 
+	 *
 	 * @param context
 	 * @param data
 	 * @param resource
@@ -55,6 +56,8 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 
 		_data = data;
 		_context = context;
+
+		timeTableFavoritesLogic = new TimeTableFavoritesLogic(context);
 	}
 
 	/**
@@ -96,7 +99,7 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 
 	/**
 	 * リストデータを取得します。
-	 * 
+	 *
 	 * @return リストデータ
 	 */
 	public List<? extends Map<String, ?>> getData() {
@@ -105,7 +108,7 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 
 	/**
 	 * 次の時刻を取得します。
-	 * 
+	 *
 	 * @param id
 	 *            時刻表お気に入りID
 	 * @return 次の時刻
@@ -113,7 +116,7 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 	private String getNextTime(Integer id) {
 		String result = null;
 
-		TimeTableFavorites entity = TimeTableFavoritesTableHelper.getEntityById(_context, id);
+		TimeTableFavorites entity = timeTableFavoritesLogic.getEntityById(id);
 		String param = HttpUtil.getQuery(entity.getUrl(), "mmdd", "hh", "mm");
 		Object[] params = { param, DateUtil.getMonth(), DateUtil.getDay(), DateUtil.getHour(),
 				DateUtil.getMinute() };
@@ -127,7 +130,7 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 			String nextTime = parser.parseString(html);
 			if (StringUtil.isNotEmpty(nextTime)) {
 				nextTime = DateUtil.getTodayString() + " " + nextTime;
-				TimeTableFavoritesTableHelper.updateNextTime(_context, nextTime, id);
+				timeTableFavoritesLogic.updateNextTime(nextTime, id);
 				result = nextTime;
 			} else {
 				result = null;

@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.annotation.UseMenu;
-import org.buskuru.tokyu.db.FavoritesTableHelper;
 import org.buskuru.tokyu.db.entity.Favorites;
+import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.NavigationDto;
 
 import android.annotation.SuppressLint;
@@ -30,7 +30,7 @@ import android.webkit.WebViewClient;
 
 /**
  * バス接近情報を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 357 $ $Date: 2015-01-25 17:48:38 +0900 (日, 25 1 2015) $
  */
@@ -38,8 +38,8 @@ import android.webkit.WebViewClient;
 public class NavigationActivity extends BaseActivity implements Runnable {
 	private ProgressDialog progressDialog;
 	private WebView webView;
-
 	private NavigationDto navigationDto;
+	private FavoritesLogic favoritesLogic;
 
 	/**
 	 * {@inheritDoc}
@@ -48,6 +48,8 @@ public class NavigationActivity extends BaseActivity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.navigation);
+
+		favoritesLogic = new FavoritesLogic(this);
 
 		progressDialog = new ProgressDialog(NavigationActivity.this);
 		progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -94,7 +96,7 @@ public class NavigationActivity extends BaseActivity implements Runnable {
 		entity.setToId(navigationDto.getToId());
 		entity.setToName(navigationDto.getTo());
 		entity.setUrl(navigationDto.getUrl());
-		FavoritesTableHelper.insertOrUpdate(this, entity);
+		favoritesLogic.insertOrUpdate(entity);
 		return true;
 	}
 

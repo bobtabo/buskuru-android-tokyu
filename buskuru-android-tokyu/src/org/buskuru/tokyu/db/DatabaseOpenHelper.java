@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.db;
@@ -16,9 +16,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 /**
  * お気に入りテーブルのヘルパークラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
+ * @deprecated 削除予定
  */
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
@@ -26,7 +27,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
 	/**
 	 * コンストラクタ。
-	 * 
+	 *
 	 * @param context
 	 *            コンテキスト
 	 */
@@ -54,7 +55,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
 	/**
 	 * データ移行します。
-	 * 
+	 *
 	 * @param context
 	 *            コンテキスト
 	 */
@@ -96,7 +97,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
 	/**
 	 * 時刻表お気に入りテーブル作成SQLを取得します。
-	 * 
+	 *
 	 * @return SQL
 	 */
 	private String getTimeTableFavoritesCreateSql() {
@@ -112,7 +113,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
 	/**
 	 * お気に入りテーブル作成SQLを取得します。
-	 * 
+	 *
 	 * @return SQL
 	 */
 	private String getFavoritesCreateSql() {
@@ -133,7 +134,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
 	/**
 	 * 停留所履歴テーブル作成SQLを取得します。
-	 * 
+	 *
 	 * @return SQL
 	 */
 	private String getStationHistoryCreateSql() {
