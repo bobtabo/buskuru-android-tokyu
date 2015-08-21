@@ -13,7 +13,7 @@
     	<dependency>
         	<groupId>android</groupId>
         	<artifactId>android</artifactId>
-        	<version>4.2.2_r2</version>
+        	<version>4.2.2_r3</version>
         	<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v4</artifactId>
-            <version>19</version>
+            <version>22.2.1</version>
         </dependency>
         <dependency>
             <groupId>com.google.android.analytics</groupId>
@@ -44,6 +44,16 @@
             <version>3.0.1</version>
             <type>jar</type>
         </dependency>
+		<dependency>
+    		<groupId>com.j256.ormlite</groupId>
+    		<artifactId>ormlite-core</artifactId>
+    		<version>4.48</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.j256.ormlite</groupId>
+    		<artifactId>ormlite-android</artifactId>
+    		<version>4.48</version>
+		</dependency>
     </dependencies>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
@@ -51,7 +61,7 @@
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
-				<version>3.8.2</version>
+				<version>3.9.0-rc.3</version>
 				<configuration>
 					<sdk>
 						<platform>17</platform>
@@ -72,25 +82,25 @@
 			</plugin>
 		</plugins>
 	</build>
-	
-	<repositories>
-	    <repository>
-	        <id>mvnrepository</id>
-	        <url>http://mvnrepository.com/artifact/</url>
-	    </repository>
-	</repositories>
-	
+
+<!-- 	<repositories> -->
+<!-- 	    <repository> -->
+<!-- 	        <id>mvnrepository</id> -->
+<!-- 	        <url>http://mvnrepository.com/artifact/</url> -->
+<!-- 	    </repository> -->
+<!-- 	</repositories> -->
+
 	<pluginRepositories>
-		<pluginRepository>
-	        <id>mvnrepository</id>
-	        <url>http://mvnrepository.com/artifact/</url>
-		</pluginRepository>
+<!-- 		<pluginRepository> -->
+<!-- 	        <id>mvnrepository</id> -->
+<!-- 	        <url>http://mvnrepository.com/artifact/</url> -->
+<!-- 		</pluginRepository> -->
 		<pluginRepository>
 	        <id>jayway-snapshots</id>
 	        <url>http://oss.sonatype.org/content/repositories/jayway/</url>
 		</pluginRepository>
 	</pluginRepositories>
-    
+
 	<profiles>
         <profile>
             <id>sign</id>
@@ -140,7 +150,7 @@
         			<plugin>
           				<groupId>org.codehaus.mojo</groupId>
           				<artifactId>exec-maven-plugin</artifactId>
-          				<version>1.2.1</version>
+          				<version>1.4.0</version>
           				<executions>
             				<execution>
               					<id>zipalign</id>
@@ -149,7 +159,7 @@
               					</goals>
               					<phase>package</phase>
               					<configuration>
-                					<executable>${ANDROID_HOME}/tools/zipalign</executable>
+                					<executable>${ANDROID_HOME}/build-tools/22.0.1/zipalign</executable>
                 						<arguments>
                 						    <argument>-f</argument>
                   							<argument>-v</argument>
