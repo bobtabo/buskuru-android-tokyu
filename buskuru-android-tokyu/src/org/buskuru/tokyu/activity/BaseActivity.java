@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -17,6 +17,9 @@ import org.buskuru.tokyu.parse.PlayStoreParser;
 import org.buskuru.tokyu.util.HttpUtil;
 import org.buskuru.tokyu.util.NumberUtil;
 import org.buskuru.tokyu.util.StringUtil;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -37,11 +40,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.google.analytics.tracking.android.EasyTracker;
-
 /**
  * 画面を処理する規定アクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 459 $ $Date: 2015-02-03 00:22:31 +0900 (火, 03 2 2015) $
  */
@@ -65,7 +66,7 @@ public abstract class BaseActivity extends Activity implements Constants {
 
 	/**
 	 * タイトルアイコンを表示するか確認します。
-	 * 
+	 *
 	 * @return 表示する場合 true を返します
 	 */
 	protected boolean isTitleIcon() {
@@ -116,7 +117,7 @@ public abstract class BaseActivity extends Activity implements Constants {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		EasyTracker.getInstance(this).activityStart(this);
+		sendAnalytics();
 	}
 
 	/**
@@ -125,7 +126,7 @@ public abstract class BaseActivity extends Activity implements Constants {
 	@Override
 	protected void onStop() {
 		super.onStop();
-		EasyTracker.getInstance(this).activityStop(this);
+		sendAnalytics();
 	}
 
 	/**
@@ -143,7 +144,7 @@ public abstract class BaseActivity extends Activity implements Constants {
 
 	/**
 	 * バスくるアプリケーションを取得します。
-	 * 
+	 *
 	 * @return アプリケーション
 	 */
 	public BusNaviApplication getBusNaviApplication() {
@@ -218,7 +219,17 @@ public abstract class BaseActivity extends Activity implements Constants {
 	}
 
 	/**
-	 * 
+	 * アナリティクスへ送信します。
+	 */
+	@SuppressWarnings("deprecation")
+	protected final void sendAnalytics() {
+		Tracker t = getBusNaviApplication().getTracker();
+		t.setScreenName(getClass().getSimpleName());
+		t.send(new HitBuilders.AppViewBuilder().build());
+	}
+
+	/**
+	 *
 	 * @return
 	 * @throws NameNotFoundException
 	 */

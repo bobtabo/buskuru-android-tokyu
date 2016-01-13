@@ -21,6 +21,9 @@ import org.buskuru.tokyu.service.AccessNoticeService;
 import org.buskuru.tokyu.util.NumberUtil;
 import org.buskuru.tokyu.util.StringUtil;
 
+import com.google.android.gms.analytics.GoogleAnalytics;
+import com.google.android.gms.analytics.Tracker;
+
 import android.app.Activity;
 import android.app.Application;
 import android.content.Intent;
@@ -52,6 +55,9 @@ public class BusNaviApplication extends Application implements Constants {
 
 	/** １つ前に実行されたアクティビティ */
 	private Activity target = null;
+
+	/** Google Analytics Tracker */
+	private Tracker tracker;
 
 	/** 停留所検索であることを意味します */
 	public boolean fromRoute = false;
@@ -231,6 +237,19 @@ public class BusNaviApplication extends Application implements Constants {
 		fromRoute = false;
 		fromTimeTable = false;
 	}
+
+	/**
+	 * Google Analytics Tracker を取得します。
+	 *
+	 * @return Google Analytics Tracker
+	 */
+	public synchronized Tracker getTracker() {
+        if (tracker == null) {
+            GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
+            tracker = analytics.newTracker(R.string.ga_trackingId);
+        }
+        return tracker;
+    }
 
 	/**
 	 * バス情報のインナークラスです。
