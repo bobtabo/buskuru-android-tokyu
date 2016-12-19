@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -43,7 +43,7 @@ import android.widget.GridView;
 
 /**
  * 50音停留所検索画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 253 $ $Date: 2014-11-28 01:22:22 +0900 (金, 28 11 2014) $
  */
@@ -121,6 +121,7 @@ public class StationActivity extends BaseActivity implements OnItemClickListener
 	/**
 	 * WebView設定を行います。
 	 */
+	@SuppressWarnings("deprecation")
 	@SuppressLint("SetJavaScriptEnabled")
 	private WebView getWebView() {
 		WebView webView = new WebView(this);
@@ -152,7 +153,7 @@ public class StationActivity extends BaseActivity implements OnItemClickListener
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */

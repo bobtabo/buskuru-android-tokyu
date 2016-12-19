@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -38,7 +38,7 @@ import android.widget.TextView;
 
 /**
  * 時刻表バス選択画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
@@ -138,6 +138,7 @@ public class TimeTableBusActivity extends BaseActivity implements Runnable, OnIt
 	/**
 	 * WebView設定を行います。
 	 */
+	@SuppressWarnings("deprecation")
 	@SuppressLint("SetJavaScriptEnabled")
 	private WebView getWebView(final VIEW_TYPE viewTYpe) {
 		WebView webView = new WebView(this);
@@ -167,7 +168,7 @@ public class TimeTableBusActivity extends BaseActivity implements Runnable, OnIt
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */
@@ -197,7 +198,7 @@ public class TimeTableBusActivity extends BaseActivity implements Runnable, OnIt
 
 	/**
 	 * HTMLソースを解析し、Webページを表示します。
-	 * 
+	 *
 	 * @param src
 	 *            HTMLソース
 	 */

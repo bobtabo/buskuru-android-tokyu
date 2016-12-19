@@ -33,6 +33,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -142,7 +143,7 @@ public class ParentActivityGroup extends ActivityGroup implements OnClickListene
 			Window activity = getLocalActivityManager().startActivity(
 					activityClass.getSimpleName(), intent);
 
-			container.addView(activity.getDecorView());
+			container.addView(activity.getDecorView(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.FILL_PARENT, ViewGroup.LayoutParams.FILL_PARENT));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.parse;
@@ -15,13 +15,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.buskuru.tokyu.util.StringUtil;
 import org.htmlcleaner.CleanerProperties;
 import org.htmlcleaner.HtmlCleaner;
 import org.htmlcleaner.TagNode;
 
 /**
  * 時刻表／選択バスHTMLを解析するクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
@@ -51,7 +52,7 @@ public class TimeTableSelectBusParser extends BaseHtmlParser {
 
 	/**
 	 * HTMLを解析し、バス停マップを作成します。
-	 * 
+	 *
 	 * @param html
 	 *            HTML
 	 * @return バス停マップのリスト
@@ -76,7 +77,14 @@ public class TimeTableSelectBusParser extends BaseHtmlParser {
 		for (TagNode input : inputList) {
 			if ("hidden".equals(input.getAttributeByName("type"))) {
 				Map<String, String> map = new LinkedHashMap<String, String>();
-				map.put(input.getAttributeByName("name"), input.getAttributeByName("value"));
+				String attr = input.getAttributeByName("name");
+				if (StringUtil.isEmpty(attr)) {
+					continue;
+				}
+				if ("mmdd".equals(attr) || "hh".equals(attr) || "mm".equals(attr)) {
+					continue;
+				}
+				map.put(attr, input.getAttributeByName("value"));
 				result.add(map);
 			}
 		}

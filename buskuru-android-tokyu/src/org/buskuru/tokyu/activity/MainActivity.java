@@ -67,7 +67,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 		listView.setOnItemClickListener(this);
 		listView.setOnItemLongClickListener(this);
 
-		showVersionUpInfo();
+//		showVersionUpInfo();
 	}
 
 	/**

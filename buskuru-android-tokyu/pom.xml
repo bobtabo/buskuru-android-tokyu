@@ -64,7 +64,7 @@
 				<version>3.9.0-rc.3</version>
 				<configuration>
 					<sdk>
-						<platform>17</platform>
+						<platform>22</platform>
 						<path>${ANDROID_HOME}</path>
 					</sdk>
 				</configuration>

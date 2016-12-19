@@ -115,6 +115,7 @@ public class NavigationActivity extends BaseActivity implements Runnable {
 	/**
 	 * WebView設定を行います。
 	 */
+	@SuppressWarnings("deprecation")
 	@SuppressLint({ "SetJavaScriptEnabled", "NewApi" })
 	private void webViewSetting() {
 		webView.setWebViewClient(new WebViewClient() {

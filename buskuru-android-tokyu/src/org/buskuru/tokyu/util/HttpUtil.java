@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.util;
@@ -29,13 +29,14 @@ import org.buskuru.tokyu.exceptions.ServerConnectionException;
 
 import android.util.Log;
 
+@SuppressWarnings("deprecation")
 public final class HttpUtil {
 
 	private static String TAG = "Buskuru";
 
 	/**
 	 * POSTします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @return サーバからのレスポンス
@@ -46,7 +47,7 @@ public final class HttpUtil {
 
 	/**
 	 * POSTします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @param params
@@ -59,7 +60,7 @@ public final class HttpUtil {
 
 	/**
 	 * POSTします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @param params
@@ -119,7 +120,7 @@ public final class HttpUtil {
 
 	/**
 	 * GETします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @return サーバからのレスポンス
@@ -130,7 +131,7 @@ public final class HttpUtil {
 
 	/**
 	 * GETします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @param params
@@ -143,7 +144,7 @@ public final class HttpUtil {
 
 	/**
 	 * GETします。
-	 * 
+	 *
 	 * @param url
 	 *            URL
 	 * @param params
@@ -203,7 +204,7 @@ public final class HttpUtil {
 
 	/**
 	 * 対象URLのHTMLを取得します。
-	 * 
+	 *
 	 * @param url
 	 *            対象URL
 	 * @return HTMLソース
@@ -229,7 +230,7 @@ public final class HttpUtil {
 
 	/**
 	 * 対象URLのHTMLを取得します。
-	 * 
+	 *
 	 * @param url
 	 *            対象URL
 	 * @return HTMLソース
@@ -255,7 +256,7 @@ public final class HttpUtil {
 
 	/**
 	 * URLのクエリ文字列を取得します。
-	 * 
+	 *
 	 * @param url
 	 *            対象URL
 	 * @param excludeKey

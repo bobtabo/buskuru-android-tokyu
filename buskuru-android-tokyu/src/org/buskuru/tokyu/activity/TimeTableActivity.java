@@ -88,7 +88,6 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 				Object[] params = { param, DateUtil.getMonth(), DateUtil.getDay(),
 						DateUtil.getHour(), DateUtil.getMinute() };
 				String url = MessageFormat.format(getString(R.string.tokyu_time_bus_url), params);
-
 				webView = (WebView) findViewById(R.id.webview);
 				webViewSetting();
 				loadUrl = url;

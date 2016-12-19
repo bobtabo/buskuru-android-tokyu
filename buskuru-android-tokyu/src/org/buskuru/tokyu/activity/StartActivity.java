@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.activity;
@@ -10,18 +10,18 @@ package org.buskuru.tokyu.activity;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.util.MessageUtil;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
-
 /**
  * スタート画面を処理するアクティビティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
@@ -64,6 +64,7 @@ public class StartActivity extends FragmentActivity {
 	/**
 	 * Google Play開発者サービスを確認します。
 	 */
+	@SuppressWarnings("deprecation")
 	private void checkServiceAvailable() {
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
 		if (ConnectionResult.SUCCESS == resultCode) {
@@ -110,7 +111,7 @@ public class StartActivity extends FragmentActivity {
 
 		/**
 		 * ダイアログを設定します。
-		 * 
+		 *
 		 * @param dialog
 		 *            ダイアログ
 		 */

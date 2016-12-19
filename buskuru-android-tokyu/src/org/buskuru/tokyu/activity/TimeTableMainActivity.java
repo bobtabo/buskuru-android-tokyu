@@ -218,6 +218,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	/**
 	 * WebView設定を行います。
 	 */
+	@SuppressWarnings("deprecation")
 	@SuppressLint("SetJavaScriptEnabled")
 	private WebView getWebView() {
 		WebView webView = new WebView(this);
