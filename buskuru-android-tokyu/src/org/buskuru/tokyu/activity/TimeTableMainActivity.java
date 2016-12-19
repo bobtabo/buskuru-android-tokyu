@@ -306,14 +306,20 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 		List<TimeTableFavorites> list = timeTableFavoritesLogic.findAll();
 		for (TimeTableFavorites entity : list) {
+			String html = HttpUtil.getHtmlEx(entity.getUrl());
+			TimeTableFromParser parser = new TimeTableFromParser();
+			String fromName = parser.parseString(html);
+
+			//ver.1.2.4以前は不正データ
+			if (fromName.indexOf("の時刻表はございません。") > -1) {
+				timeTableFavoritesLogic.deleteById(entity.getId());
+				continue;
+			}
+
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("id", entity.getId());
 			map.put("name", entity.getName());
 			map.put("next", entity.getNextTime());
-
-			String html = HttpUtil.getHtmlEx(entity.getUrl());
-			TimeTableFromParser parser = new TimeTableFromParser();
-			String fromName = parser.parseString(html);
 			map.put("from_name", fromName);
 
 			result.add(map);

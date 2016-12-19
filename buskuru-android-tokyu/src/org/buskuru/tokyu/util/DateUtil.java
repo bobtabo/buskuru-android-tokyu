@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.util;
@@ -24,7 +24,7 @@ import android.annotation.SuppressLint;
 
 /**
  * 日付関連のユーティリティクラスです。
- * 
+ *
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 362 $ $Date: 2015-01-25 19:26:55 +0900 (日, 25 1 2015) $
  */
@@ -32,7 +32,7 @@ public class DateUtil {
 
 	/**
 	 * 日付文字列を日付に変換します。
-	 * 
+	 *
 	 * @param date
 	 *            日付文字列
 	 * @param format
@@ -51,7 +51,7 @@ public class DateUtil {
 
 	/**
 	 * 日付文字列を日付に変換します。
-	 * 
+	 *
 	 * @param date
 	 *            日付文字列
 	 * @param format
@@ -68,7 +68,7 @@ public class DateUtil {
 
 	/**
 	 * 年月日数値を日付に変換します。
-	 * 
+	 *
 	 * @param yyyy
 	 *            年
 	 * @param mm
@@ -88,7 +88,7 @@ public class DateUtil {
 
 	/**
 	 * 時刻数値を日付に変換します。
-	 * 
+	 *
 	 * @param hh
 	 *            時間
 	 * @param mm
@@ -108,7 +108,7 @@ public class DateUtil {
 
 	/**
 	 * 年月日時刻数値を日付に変換します。
-	 * 
+	 *
 	 * @param yyyy
 	 *            年
 	 * @param mi
@@ -137,7 +137,7 @@ public class DateUtil {
 
 	/**
 	 * 日付をカレンダーに変換します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return カレンダー
@@ -150,7 +150,7 @@ public class DateUtil {
 
 	/**
 	 * 時刻を日付オブジェクトに変換します。
-	 * 
+	 *
 	 * @param hour
 	 *            時
 	 * @param minute
@@ -167,7 +167,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日付を取得します。
-	 * 
+	 *
 	 * @return 現在日付
 	 */
 	public static Date getToday() {
@@ -176,7 +176,7 @@ public class DateUtil {
 
 	/**
 	 * システム日時を取得します.
-	 * 
+	 *
 	 * @return システム timestamp
 	 */
 	public static Timestamp getSystemTimestamp() {
@@ -186,7 +186,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日付文字列を取得します。
-	 * 
+	 *
 	 * @param format
 	 *            書式
 	 * @return 現在日付文字列
@@ -197,7 +197,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日付文字列を取得します。
-	 * 
+	 *
 	 * @return 現在日付文字列
 	 */
 	public static String getTodayString() {
@@ -206,7 +206,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を文字列に変換します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param format
@@ -221,7 +221,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を文字列に変換します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param format
@@ -234,7 +234,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日時を指定書式で文字列に変換します。
-	 * 
+	 *
 	 * @param format
 	 *            書式
 	 * @return 文字列
@@ -246,7 +246,7 @@ public class DateUtil {
 
 	/**
 	 * 年月日時の文字列を日付に変換します。
-	 * 
+	 *
 	 * @param yyyy
 	 *            年
 	 * @param mm
@@ -273,7 +273,7 @@ public class DateUtil {
 
 	/**
 	 * 日付かを確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 不正な日付の場合 false を返します
@@ -296,7 +296,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の最終日時（23時59分59秒）を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の最終日時
@@ -307,7 +307,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の最終日時（23時59分59秒）を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の最終日時
@@ -322,7 +322,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の最終日時（23時59分59秒）を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の最終日時
@@ -338,7 +338,7 @@ public class DateUtil {
 
 	/**
 	 * 本日日時（0時0分0秒）を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の最終日時
@@ -349,7 +349,7 @@ public class DateUtil {
 
 	/**
 	 * 時間をゼロにした日時を取得します。
-	 * 
+	 *
 	 * @param stamp
 	 *            対象日時
 	 * @return 時間をゼロにした日時
@@ -365,7 +365,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の翌月を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の翌月
@@ -376,7 +376,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の先月を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の翌月
@@ -387,7 +387,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の翌日を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の翌日
@@ -398,7 +398,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日の前日を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日の前日
@@ -409,7 +409,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を加算／減算します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param amount
@@ -422,7 +422,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を加算／減算します。
-	 * 
+	 *
 	 * @param milliseconds
 	 *            ミリ秒
 	 * @param date
@@ -439,7 +439,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を加算／減算します。
-	 * 
+	 *
 	 * @param date
 	 *            日付文字列
 	 * @param date
@@ -454,7 +454,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を加算／減算します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param calendarField
@@ -472,7 +472,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を加算／減算した日付文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付文字列
 	 * @param date
@@ -489,7 +489,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日時に分を加算したタイムスタンプを取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日時
 	 * @param amount
@@ -505,7 +505,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日時に秒を加算したタイムスタンプを取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日時
 	 * @param amount
@@ -521,7 +521,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日までの残り日時文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 残り日時文字列
@@ -563,7 +563,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日と本日の差を返します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日と本日の差（前日は0より大きい、後日はマイナス）
@@ -574,7 +574,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日と本日の差を返します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 対象日と本日の差（前日は0より大きい、後日はマイナス）
@@ -589,7 +589,7 @@ public class DateUtil {
 
 	/**
 	 * ２つの日付の差を返します。
-	 * 
+	 *
 	 * @param date1
 	 *            対象日
 	 * @param date2
@@ -606,7 +606,7 @@ public class DateUtil {
 
 	/**
 	 * 対象時刻と現在時刻の差が、指定分前であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            対象時刻
 	 * @return 指定分前であれば true を返します
@@ -622,7 +622,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日が過去日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 過去日の場合 true を返します。
@@ -633,7 +633,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日が過去日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日
 	 * @return 過去日の場合 true を返します。
@@ -646,7 +646,7 @@ public class DateUtil {
 
 	/**
 	 * 過去日時であるか確認します。
-	 * 
+	 *
 	 * @param yyyy
 	 *            年
 	 * @param mm
@@ -663,7 +663,7 @@ public class DateUtil {
 
 	/**
 	 * 過去日時であるか確認します。
-	 * 
+	 *
 	 * @return 過去日時の場合 true を返します。
 	 */
 	public static boolean isPastDateTime(Date date) {
@@ -674,7 +674,7 @@ public class DateUtil {
 
 	/**
 	 * 過去日時であるか確認します。
-	 * 
+	 *
 	 * @return 過去日時の場合 true を返します。
 	 */
 	public static boolean isPastTime(int hour, int minute) {
@@ -685,7 +685,7 @@ public class DateUtil {
 
 	/**
 	 * 過去日時であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            対象日時
 	 * @return 過去日の場合 true を返します。
@@ -698,7 +698,7 @@ public class DateUtil {
 
 	/**
 	 * 未来日付であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付文字列
 	 * @return 未来日付の場合 true を返します
@@ -709,7 +709,7 @@ public class DateUtil {
 
 	/**
 	 * 未来日付であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 未来日付の場合 true を返します
@@ -722,7 +722,7 @@ public class DateUtil {
 
 	/**
 	 * 未来日時であるか確認します。
-	 * 
+	 *
 	 * @return 未来日時の場合 true を返します。
 	 */
 	public static boolean isFutureTime(int hour, int minute) {
@@ -733,7 +733,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日時であるか確認します。
-	 * 
+	 *
 	 * @param yyyy
 	 *            年
 	 * @param mm
@@ -750,7 +750,7 @@ public class DateUtil {
 
 	/**
 	 * 現在日時であるか確認します。
-	 * 
+	 *
 	 * @return 現在日時の場合 true を返します。
 	 */
 	public static boolean isCurrentDateTime(Date date) {
@@ -761,7 +761,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を比較します。
-	 * 
+	 *
 	 * @param from
 	 *            開始日
 	 * @param to
@@ -774,7 +774,7 @@ public class DateUtil {
 
 	/**
 	 * 日時を比較します。
-	 * 
+	 *
 	 * @param from
 	 *            開始日時
 	 * @param to
@@ -788,7 +788,7 @@ public class DateUtil {
 
 	/**
 	 * 日付を比較します。
-	 * 
+	 *
 	 * @param from
 	 *            開始日
 	 * @param to
@@ -796,6 +796,10 @@ public class DateUtil {
 	 * @return from >= to の場合 false を返します
 	 */
 	public static boolean isComparisonDate(Date from, Date to) {
+		if (from == null || to == null) {
+			return false;
+		}
+
 		long fromTime = from.getTime();
 		long toTime = to.getTime();
 		return fromTime < toTime;
@@ -803,7 +807,7 @@ public class DateUtil {
 
 	/**
 	 * 時間リストを取得します。
-	 * 
+	 *
 	 * @return 時間リスト
 	 */
 	public static List<String> getTimeList() {
@@ -817,7 +821,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から年文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 年文字列
@@ -828,7 +832,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から月文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 月文字列
@@ -839,7 +843,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から日文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 日文字列
@@ -850,7 +854,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から時文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 時文字列
@@ -861,7 +865,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から分文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 分文字列
@@ -872,7 +876,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から秒文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 秒文字列
@@ -883,7 +887,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から年数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 年数値
@@ -894,7 +898,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から月数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 月数値
@@ -905,7 +909,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から日数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 日数値
@@ -916,7 +920,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から時数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 時数値
@@ -927,7 +931,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から分数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 分数値
@@ -938,7 +942,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から秒数値を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 秒数値
@@ -949,7 +953,7 @@ public class DateUtil {
 
 	/**
 	 * 今月の何週目を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 今月の何週目
@@ -962,7 +966,7 @@ public class DateUtil {
 
 	/**
 	 * 曜日を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 曜日
@@ -975,7 +979,7 @@ public class DateUtil {
 
 	/**
 	 * 日付から対象フィールドの文字列を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param calendarField
@@ -999,7 +1003,7 @@ public class DateUtil {
 
 	/**
 	 * 当月の月初を取得します。
-	 * 
+	 *
 	 * @return 当月の月初
 	 */
 	@SuppressWarnings("deprecation")
@@ -1011,7 +1015,7 @@ public class DateUtil {
 
 	/**
 	 * 翌月の月初を取得します。
-	 * 
+	 *
 	 * @return 翌月の月初
 	 */
 	public static Date getNextMonthFirstDay() {
@@ -1024,7 +1028,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日付が範囲内か確認します。
-	 * 
+	 *
 	 * @param from
 	 *            範囲の下限
 	 * @param to
@@ -1042,7 +1046,7 @@ public class DateUtil {
 
 	/**
 	 * 対象日時が本日か確認します。
-	 * 
+	 *
 	 * @param stamp
 	 *            対象日時
 	 * @return 本日の場合 true を返します
@@ -1058,7 +1062,7 @@ public class DateUtil {
 
 	/**
 	 * 現在の年数文字列を取得します。
-	 * 
+	 *
 	 * @return 現在の年数文字列
 	 */
 	public static String getYear() {
@@ -1067,7 +1071,7 @@ public class DateUtil {
 
 	/**
 	 * 現在の月数文字列を取得します。
-	 * 
+	 *
 	 * @return 現在の月数文字列
 	 */
 	public static String getMonth() {
@@ -1084,7 +1088,7 @@ public class DateUtil {
 
 	/**
 	 * 現在の日数文字列を取得します。
-	 * 
+	 *
 	 * @return 現在の日数文字列
 	 */
 	public static String getDay() {
@@ -1093,7 +1097,7 @@ public class DateUtil {
 
 	/**
 	 * 現在の時数文字列を取得します。
-	 * 
+	 *
 	 * @return 現在の時数文字列
 	 */
 	public static String getHour() {
@@ -1102,7 +1106,7 @@ public class DateUtil {
 
 	/**
 	 * 現在の分数文字列を取得します。
-	 * 
+	 *
 	 * @return 現在の分数文字列
 	 */
 	public static String getMinute() {
@@ -1111,7 +1115,7 @@ public class DateUtil {
 
 	/**
 	 * 指定した日付フィールド以降を切り捨てます。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @param field
