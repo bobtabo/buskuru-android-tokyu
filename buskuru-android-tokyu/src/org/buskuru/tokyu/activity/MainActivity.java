@@ -9,33 +9,24 @@ package org.buskuru.tokyu.activity;
 
 import java.util.List;
 
-import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.adapter.FavoritesAdapter;
 import org.buskuru.tokyu.annotation.UseMenu;
 import org.buskuru.tokyu.db.entity.Favorites;
 import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.NavigationDto;
-import org.buskuru.tokyu.util.MessageUtil;
-import org.buskuru.tokyu.util.StringUtil;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView.BufferType;
 
 /**
  * トップ画面を処理するアクティビティクラスです。
@@ -44,8 +35,7 @@ import android.widget.TextView.BufferType;
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
 @UseMenu
-public class MainActivity extends BaseActivity implements OnItemClickListener,
-		OnItemLongClickListener {
+public class MainActivity extends BaseActivity implements OnItemClickListener {
 	private ListView listView;
 	private FavoritesLogic favoritesLogic;
 	private Handler handler = new Handler();
@@ -65,7 +55,7 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 		FavoritesAdapter adapter = new FavoritesAdapter(this, android.R.layout.simple_list_item_1);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
-		listView.setOnItemLongClickListener(this);
+//		listView.setOnItemLongClickListener(this);
 
 //		showVersionUpInfo();
 	}
@@ -107,67 +97,67 @@ public class MainActivity extends BaseActivity implements OnItemClickListener,
 				Intent.FLAG_ACTIVITY_CLEAR_TOP, null, "navigationDto", navigationDto);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
-			long paramLong) {
-		final Object name = paramAdapterView.getItemAtPosition(paramInt);
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-		alertDialog.setTitle("選択して下さい");
-		alertDialog.setItems(R.array.list_favorites_action, new DialogInterface.OnClickListener() {
-			@SuppressWarnings("unchecked")
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if (which == 0) {
-					LayoutInflater factory = LayoutInflater.from(MainActivity.this);
-					final View entryView = factory.inflate(R.layout.favorites_entry_dialog, null);
-					final EditText edit = (EditText) entryView.findViewById(R.id.edit);
-					edit.setText((String) name, BufferType.EDITABLE);
-
-					AlertDialog.Builder inputDialog = new AlertDialog.Builder(MainActivity.this);
-					inputDialog.setTitle("お気に入り名の変更");
-					inputDialog.setView(entryView);
-					inputDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int whichButton) {
-							String editName = edit.getText().toString();
-							if (StringUtil.isEmpty(editName.trim())) {
-								MessageUtil.openError(MainActivity.this, "お気に入り名を入力して下さい。");
-								return;
-							}
-							Favorites entity = favoritesLogic.getEntityByName((String) name);
-							if (!editName.equals(entity.getName())) {
-								entity.setName(editName);
-								favoritesLogic.insertOrUpdate(entity);
-								ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView
-										.getAdapter();
-								int position = adapter.getPosition((String) name);
-								adapter.remove((String) name);
-								adapter.insert(editName, position);
-								adapter.notifyDataSetChanged();
-							}
-						}
-					}).setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int whichButton) {
-
-						}
-					}).create().show();
-				} else if (which == 1) {
-					Favorites entity = new Favorites();
-					entity.setBusId(((BusNaviApplication) MainActivity.this.getApplication())
-							.getBusId());
-					entity.setName((String) name);
-					favoritesLogic.deleteByName(entity);
-					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
-					adapter.remove((String) name);
-					adapter.notifyDataSetChanged();
-				}
-			}
-		});
-		alertDialog.create().show();
-		return false;
-	}
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	@Override
+//	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
+//			long paramLong) {
+//		final Object name = paramAdapterView.getItemAtPosition(paramInt);
+//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+//		alertDialog.setTitle("選択して下さい");
+//		alertDialog.setItems(R.array.list_favorites_action, new DialogInterface.OnClickListener() {
+//			@SuppressWarnings("unchecked")
+//			@Override
+//			public void onClick(DialogInterface dialog, int which) {
+//				if (which == 0) {
+//					LayoutInflater factory = LayoutInflater.from(MainActivity.this);
+//					final View entryView = factory.inflate(R.layout.favorites_entry_dialog, null);
+//					final EditText edit = (EditText) entryView.findViewById(R.id.edit);
+//					edit.setText((String) name, BufferType.EDITABLE);
+//
+//					AlertDialog.Builder inputDialog = new AlertDialog.Builder(MainActivity.this);
+//					inputDialog.setTitle("お気に入り名の変更");
+//					inputDialog.setView(entryView);
+//					inputDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//						public void onClick(DialogInterface dialog, int whichButton) {
+//							String editName = edit.getText().toString();
+//							if (StringUtil.isEmpty(editName.trim())) {
+//								MessageUtil.openError(MainActivity.this, "お気に入り名を入力して下さい。");
+//								return;
+//							}
+//							Favorites entity = favoritesLogic.getEntityByName((String) name);
+//							if (!editName.equals(entity.getName())) {
+//								entity.setName(editName);
+//								favoritesLogic.insertOrUpdate(entity);
+//								ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView
+//										.getAdapter();
+//								int position = adapter.getPosition((String) name);
+//								adapter.remove((String) name);
+//								adapter.insert(editName, position);
+//								adapter.notifyDataSetChanged();
+//							}
+//						}
+//					}).setNegativeButton("キャンセル", new DialogInterface.OnClickListener() {
+//						public void onClick(DialogInterface dialog, int whichButton) {
+//
+//						}
+//					}).create().show();
+//				} else if (which == 1) {
+//					Favorites entity = new Favorites();
+//					entity.setBusId(((BusNaviApplication) MainActivity.this.getApplication())
+//							.getBusId());
+//					entity.setName((String) name);
+//					favoritesLogic.deleteByName(entity);
+//					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
+//					adapter.remove((String) name);
+//					adapter.notifyDataSetChanged();
+//				}
+//			}
+//		});
+//		alertDialog.create().show();
+//		return false;
+//	}
 
 	/**
 	 * {@inheritDoc}

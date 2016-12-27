@@ -19,15 +19,15 @@
 		android:textSize="24sp"
 		android:textColor="#000000"
 		android:layout_marginTop="20dip"/>
-	
-	<LinearLayout   
-		android:id="@+id/LinearLayout1"  
-   		android:orientation="horizontal"  
-   		android:layout_height="wrap_content"  
+
+	<LinearLayout
+		android:id="@+id/LinearLayout1"
+   		android:orientation="horizontal"
+   		android:layout_height="wrap_content"
    		android:layout_width="fill_parent"
    		android:layout_marginTop="60dip"
    		android:gravity="right">
-	    
+
 		<Button
 			android:id="@+id/fromSyllabary"
 			android:layout_width="wrap_content"
@@ -41,16 +41,9 @@
 			android:text="履歴"
 			android:layout_height="wrap_content">
 		</Button>
-		
-		<Button
-			android:id="@+id/fromTime"
-			android:layout_width="wrap_content"
-			android:text="時刻表"
-			android:layout_height="wrap_content">
-		</Button>
-		
+
 	</LinearLayout>
-	
+
 	<TextView
 		android:id="@+id/TextView02"
 		android:text="お気に入り"
@@ -58,11 +51,27 @@
 		android:layout_height="wrap_content"
    		android:layout_marginTop="110dip">
 	</TextView>
-	
+
 	<ListView
 		android:id="@+id/ListView01"
 		android:layout_width="wrap_content"
 		android:layout_height="fill_parent"
-   		android:layout_below="@+id/TextView02"/>
-	
+   		android:layout_below="@+id/TextView02"
+   		android:layout_above="@+id/LinearLayout01"/>
+
+	<LinearLayout
+		android:id="@+id/LinearLayout01"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:layout_alignParentBottom="true">
+
+		<Button
+			android:id="@+id/fromTime"
+			android:layout_width="fill_parent"
+			android:layout_alignParentBottom="true"
+			android:text="時刻表検索"
+			android:layout_height="wrap_content">
+		</Button>
+	</LinearLayout>
+
 </RelativeLayout>

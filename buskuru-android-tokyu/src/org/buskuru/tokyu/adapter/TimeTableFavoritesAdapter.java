@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import org.buskuru.tokyu.R;
+import org.buskuru.tokyu.activity.TimeTableMainActivity;
 import org.buskuru.tokyu.db.entity.TimeTableFavorites;
 import org.buskuru.tokyu.db.logic.TimeTableFavoritesLogic;
 import org.buskuru.tokyu.parse.TimeTableNextParser;
@@ -20,13 +21,17 @@ import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.HttpUtil;
 import org.buskuru.tokyu.util.StringUtil;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TwoLineListItem;
+import android.widget.TextView;
 
 /**
  * 停留所リストのアダプタクラスです。
@@ -34,12 +39,13 @@ import android.widget.TwoLineListItem;
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 331 $ $Date: 2015-01-21 01:07:41 +0900 (水, 21 1 2015) $
  */
-@SuppressWarnings("deprecation")
-public class TimeTableFavoritesAdapter extends SimpleAdapter {
+public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickListener {
 
 	private List<? extends Map<String, ?>> _data;
+	private LayoutInflater mInflater;
 	private Context _context;
 	private TimeTableFavoritesLogic timeTableFavoritesLogic;
+	private TimeTableMainActivity activity;
 
 	/**
 	 * コンストラクタ。
@@ -57,17 +63,24 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 		_data = data;
 		_context = context;
 
+		activity = (TimeTableMainActivity) context;
+		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		timeTableFavoritesLogic = new TimeTableFavoritesLogic(context);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressLint({ "ViewHolder", "InflateParams" })
 	@SuppressWarnings({ "unchecked" })
 	@Override
 	public View getView(final int position, View convertView, ViewGroup parent) {
+		convertView = mInflater.inflate(R.layout.favorires_time_table_row, null);
 		final Map<String, Object> map = (Map<String, Object>) ((ListView) parent)
 				.getItemAtPosition(position);
+
+		TextView textView1 = (TextView) convertView.findViewById(R.id.textView1);
+		TextView textView2 = (TextView) convertView.findViewById(R.id.textView2);
 
 		String from = DateUtil.dateToString(DateUtil.getSystemTimestamp(), "yyyy/MM/dd HH:mm:ss");
 		String to = map.get("next") + ":00";
@@ -76,8 +89,8 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 			nextTime = getNextTime((Integer) map.get("id"));
 		}
 
-		final TwoLineListItem result = (TwoLineListItem) super.getView(position, convertView,
-				parent);
+//		final TwoLineListItem result = (TwoLineListItem) super.getView(position, convertView,
+//				parent);
 
 		StringBuilder name = new StringBuilder();
 		if (StringUtil.isNotEmpty((String) map.get("from_name"))) {
@@ -85,16 +98,37 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter {
 		}
 		name.append((String) map.get("name"));
 
-		result.getText1().setText(name.toString());
-		result.getText1().setTextSize(15);
-		result.getText1().setTag(map.get("id"));
+		textView1.setText(name.toString());
+		textView1.setTextSize(15);
+		textView1.setTag(map.get("id"));
 
 		if (StringUtil.isEmpty(nextTime)) {
-			result.getText2().setText("本日のバスは終了しました。");
+			textView2.setText("本日のバスは終了しました。");
 		} else {
-			result.getText2().setText("次のバスは " + nextTime.split(" ")[1] + " 発");
+			textView2.setText("次のバスは " + nextTime.split(" ")[1] + " 発");
 		}
-		return result;
+
+		Button remove = (Button) convertView.findViewById(R.id.remove);
+		remove.setOnClickListener(this);
+		remove.setTextSize(12f);
+		remove.setTag(map);
+
+		return convertView;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	public void onClick(View v) {
+		Map<String, Object> map = (Map<String, Object>) ((Button) v).getTag();
+		TimeTableFavorites entity = new TimeTableFavorites();
+		entity.setId((Integer) map.get("id"));
+		entity.setName((String) map.get("name"));
+		timeTableFavoritesLogic.deleteByName(entity);
+		getData().remove((String) map.get("favorires"));
+		notifyDataSetChanged();
+		activity.onResume();
 	}
 
 	/**

@@ -5,6 +5,8 @@
  */
 package org.buskuru.tokyu.adapter;
 
+import java.util.HashMap;
+
 /* $Id: FavoritesAdapter.java 416 2015-01-28 04:21:02Z nagashiba $ */
 
 import java.util.LinkedHashMap;
@@ -12,8 +14,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.Constants;
 import org.buskuru.tokyu.R;
+import org.buskuru.tokyu.activity.MainActivity;
 import org.buskuru.tokyu.db.entity.Favorites;
 import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.service.AccessNoticeService;
@@ -39,10 +43,12 @@ import android.widget.TextView;
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 416 $ $Date: 2015-01-28 13:21:02 +0900 (水, 28 1 2015) $
  */
-public class FavoritesAdapter extends ArrayAdapter<String> implements Constants {
+public class FavoritesAdapter extends ArrayAdapter<String> implements Constants, OnClickListener {
 	private LayoutInflater mInflater;
-	private List<Button> buttonHolder = new LinkedList<Button>();
+	private List<Map<String, Button>> buttonHolder = new LinkedList<Map<String, Button>>();
 	private FavoritesLogic favoritesLogic;
+	private MainActivity activity;
+	private FavoritesAdapter adapter;
 
 	/**
 	 * コンストラクタ。
@@ -55,6 +61,8 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 	public FavoritesAdapter(Context context, int textViewResourceId) {
 		super(context, textViewResourceId);
 
+		activity = (MainActivity) context;
+		adapter = this;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		favoritesLogic = new FavoritesLogic(context);
 	}
@@ -75,69 +83,87 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 				textView1.setText(item);
 
 				Button accessNow = (Button) convertView.findViewById(R.id.accessNow);
+				Button remove = (Button) convertView.findViewById(R.id.remove);
 				accessNow.setTextSize(12f);
+				remove.setTextSize(12f);
 
 				Map<String, Object> map = new LinkedHashMap<String, Object>();
 				map.put("favorires", item);
 				map.put("index", position);
 
 				accessNow.setTag(map);
+				remove.setTag(map);
 
 				if (buttonHolder.size() < getCount()) {
-					buttonHolder.add(accessNow);
+					Map<String, Button> buttonMap = new HashMap<String, Button>();
+					buttonMap.put("accessNow", accessNow);
+					buttonMap.put("remove", remove);
+					buttonHolder.add(buttonMap);
 				}
 
 				if (position == getCount() - 1) {
 					setAccessNowText();
 				}
 
-				accessNow.setOnClickListener(new OnClickListener() {
-					@SuppressWarnings("unchecked")
-					public void onClick(View v) {
-						SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(v
-								.getContext());
-
-						boolean access = sp.getBoolean(ACCESS_NOW, false);
-
-						Map<String, Object> map = (Map<String, Object>) ((Button) v).getTag();
-						String favorires = (String) map.get("favorires");
-						int index = (Integer) map.get("index");
-
-						if (access) {
-							sp.edit().putBoolean(ACCESS_NOW, false).commit();
-							sp.edit().remove(ACCESS_NOW_URL).commit();
-							sp.edit().remove(ACCESS_NOW_TIME).commit();
-							sp.edit().remove(ACCESS_NOW_INDEX).commit();
-							sp.edit().remove(ACCESS_NOW_FAVORITES).commit();
-
-							boolean accessNotice = sp.getBoolean(ACCESS_NOTICE, false);
-							if (!accessNotice) {
-								Intent intent = new Intent(getContext(), AccessNoticeService.class);
-								getContext().stopService(intent);
-							}
-						} else {
-							Favorites entity = favoritesLogic.getEntityByName(item);
-							sp.edit().putBoolean(ACCESS_NOW, true).commit();
-							sp.edit().putString(ACCESS_NOW_URL, entity.getUrl()).commit();
-							sp.edit()
-									.putLong(ACCESS_NOW_TIME,
-											DateUtil.getSystemTimestamp().getTime()).commit();
-							sp.edit().putInt(ACCESS_NOW_INDEX, index).commit();
-							sp.edit().putString(ACCESS_NOW_FAVORITES, favorires).commit();
-
-							boolean accessNotice = sp.getBoolean(ACCESS_NOTICE, false);
-							if (!accessNotice) {
-								Intent intent = new Intent(getContext(), AccessNoticeService.class);
-								getContext().startService(intent);
-							}
-						}
-
-						setAccessNowText(index);
-					}
-				});
+				accessNow.setOnClickListener(this);
+				remove.setOnClickListener(this);
 			}
 		}
 		return convertView;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public void onClick(View v) {
+		Button button = (Button) v;
+		Map<String, Object> map = (Map<String, Object>) button.getTag();
+		String favorires = (String) map.get("favorires");
+		int index = (Integer) map.get("index");
+
+		if (button.getId() == R.id.accessNow) {
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(v.getContext());
+
+			boolean access = sp.getBoolean(ACCESS_NOW, false);
+			if (access) {
+				sp.edit().putBoolean(ACCESS_NOW, false).commit();
+				sp.edit().remove(ACCESS_NOW_URL).commit();
+				sp.edit().remove(ACCESS_NOW_TIME).commit();
+				sp.edit().remove(ACCESS_NOW_INDEX).commit();
+				sp.edit().remove(ACCESS_NOW_FAVORITES).commit();
+
+				boolean accessNotice = sp.getBoolean(ACCESS_NOTICE, false);
+				if (!accessNotice) {
+					Intent intent = new Intent(getContext(), AccessNoticeService.class);
+					getContext().stopService(intent);
+				}
+			} else {
+				Favorites entity = favoritesLogic.getEntityByName(favorires);
+				sp.edit().putBoolean(ACCESS_NOW, true).commit();
+				sp.edit().putString(ACCESS_NOW_URL, entity.getUrl()).commit();
+				sp.edit().putLong(ACCESS_NOW_TIME, DateUtil.getSystemTimestamp().getTime())
+						.commit();
+				sp.edit().putInt(ACCESS_NOW_INDEX, index).commit();
+				sp.edit().putString(ACCESS_NOW_FAVORITES, favorires).commit();
+
+				boolean accessNotice = sp.getBoolean(ACCESS_NOTICE, false);
+				if (!accessNotice) {
+					Intent intent = new Intent(getContext(), AccessNoticeService.class);
+					getContext().startService(intent);
+				}
+			}
+
+			setAccessNowText(index);
+		} else if (button.getId() == R.id.remove) {
+			Favorites entity = new Favorites();
+			entity.setBusId(((BusNaviApplication) activity.getApplication()).getBusId());
+			entity.setName(favorires);
+			favoritesLogic.deleteByName(entity);
+			adapter.remove(favorires);
+			adapter.notifyDataSetChanged();
+		}
 	}
 
 	/**
@@ -160,25 +186,32 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants 
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
 		boolean access = sp.getBoolean(ACCESS_NOW, false);
 
-		for (Button b : buttonHolder) {
-			Map<String, Object> map = (Map<String, Object>) b.getTag();
+		for (Map<String, Button> buttonMap : buttonHolder) {
+			Button accessNow = buttonMap.get("accessNow");
+			Button remove = buttonMap.get("remove");
+			Map<String, Object> map = (Map<String, Object>) accessNow.getTag();
 			int index = (Integer) map.get("index");
 
-			b.setTextSize(12f);
+			accessNow.setTextSize(12f);
+			remove.setTextSize(12f);
 			if (access) {
 				if (index == position) {
-					b.setText("確認\n中...");
-					b.setTextColor(Color.argb(200, 0, 250, 154));
-					b.setEnabled(true);
+					accessNow.setText("確認\n中...");
+					accessNow.setTextColor(Color.argb(200, 0, 250, 154));
+					accessNow.setEnabled(true);
 				} else {
-					b.setText("直近\nバス");
-					b.setTextColor(Color.GRAY);
-					b.setEnabled(false);
+					accessNow.setText("直近\nバス");
+					accessNow.setTextColor(Color.GRAY);
+					accessNow.setEnabled(false);
 				}
+				remove.setTextColor(Color.GRAY);
+				remove.setEnabled(false);
 			} else {
-				b.setText("直近\nバス");
-				b.setTextColor(Color.WHITE);
-				b.setEnabled(true);
+				accessNow.setText("直近\nバス");
+				accessNow.setTextColor(Color.WHITE);
+				accessNow.setEnabled(true);
+				remove.setTextColor(Color.WHITE);
+				remove.setEnabled(true);
 			}
 		}
 	}

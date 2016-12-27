@@ -32,8 +32,6 @@ import org.buskuru.tokyu.util.MapUtil;
 import org.buskuru.tokyu.util.MessageUtil;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,7 +46,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,7 +57,7 @@ import android.widget.TextView;
  * @version $Revision: 332 $ $Date: 2015-01-21 01:12:04 +0900 (水, 21 1 2015) $
  */
 public class TimeTableMainActivity extends BaseActivity implements OnItemClickListener,
-		OnItemLongClickListener, OnClickListener {
+		OnClickListener {
 
 	private TextView fromStation;
 	private Button fromSyllabary;
@@ -91,7 +88,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 		listView = (ListView) findViewById(R.id.ListView01);
 		listView.setOnItemClickListener(this);
-		listView.setOnItemLongClickListener(this);
+//		listView.setOnItemLongClickListener(this);
 		listView.setScrollingCacheEnabled(false);
 
 		BusNaviApplication app = (BusNaviApplication) this.getApplication();
@@ -137,33 +134,33 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView,
-			final int paramInt, long paramLong) {
-		final Map<String, Object> map = (Map<String, Object>) listView.getItemAtPosition(paramInt);
-
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-		alertDialog.setTitle("選択して下さい");
-		alertDialog.setItems(R.array.list_table_time_favorites_action,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						if (which == 0) {
-							timeTableFavoritesLogic.deleteById((Integer) map.get("id"));
-							TimeTableFavoritesAdapter adapter = (TimeTableFavoritesAdapter) listView
-									.getAdapter();
-							adapter.getData().remove(paramInt);
-							adapter.notifyDataSetChanged();
-						}
-					}
-				});
-		alertDialog.create().show();
-		return false;
-	}
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView,
+//			final int paramInt, long paramLong) {
+//		final Map<String, Object> map = (Map<String, Object>) listView.getItemAtPosition(paramInt);
+//
+//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+//		alertDialog.setTitle("選択して下さい");
+//		alertDialog.setItems(R.array.list_table_time_favorites_action,
+//				new DialogInterface.OnClickListener() {
+//					@Override
+//					public void onClick(DialogInterface dialog, int which) {
+//						if (which == 0) {
+//							timeTableFavoritesLogic.deleteById((Integer) map.get("id"));
+//							TimeTableFavoritesAdapter adapter = (TimeTableFavoritesAdapter) listView
+//									.getAdapter();
+//							adapter.getData().remove(paramInt);
+//							adapter.notifyDataSetChanged();
+//						}
+//					}
+//				});
+//		alertDialog.create().show();
+//		return false;
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -188,7 +185,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
 
 		FavoritesTask favoritesTask = new FavoritesTask();
@@ -335,7 +332,7 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 		@Override
 		protected TimeTableFavoritesAdapter doInBackground(Void... paramArrayOfParams) {
 			return new TimeTableFavoritesAdapter(TimeTableMainActivity.this, getFavoritesMapList(),
-					android.R.layout.simple_list_item_2, new String[] { "id", "name" }, new int[] {
+					R.layout.favorires_time_table_row, new String[] { "id", "name" }, new int[] {
 							android.R.id.text1, android.R.id.text2 });
 		}
 	}
