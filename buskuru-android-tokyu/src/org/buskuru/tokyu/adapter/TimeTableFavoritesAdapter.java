@@ -40,7 +40,6 @@ import android.widget.TextView;
  * @version $Revision: 331 $ $Date: 2015-01-21 01:07:41 +0900 (水, 21 1 2015) $
  */
 public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickListener {
-
 	private List<? extends Map<String, ?>> _data;
 	private LayoutInflater mInflater;
 	private Context _context;
@@ -62,7 +61,6 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickL
 
 		_data = data;
 		_context = context;
-
 		activity = (TimeTableMainActivity) context;
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		timeTableFavoritesLogic = new TimeTableFavoritesLogic(context);
@@ -88,9 +86,6 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickL
 		if (!DateUtil.isComparisonDateTime(from, to)) {
 			nextTime = getNextTime((Integer) map.get("id"));
 		}
-
-//		final TwoLineListItem result = (TwoLineListItem) super.getView(position, convertView,
-//				parent);
 
 		StringBuilder name = new StringBuilder();
 		if (StringUtil.isNotEmpty((String) map.get("from_name"))) {

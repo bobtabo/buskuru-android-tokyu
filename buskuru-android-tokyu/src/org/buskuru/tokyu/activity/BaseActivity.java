@@ -65,25 +65,6 @@ public abstract class BaseActivity extends Activity implements Constants {
 
 			ret = true;
 			break;
-		// case R.id.version:
-		// LayoutInflater inflater = LayoutInflater.from(this);
-		// View layout = inflater.inflate(R.layout.version_dialog,
-		// (ViewGroup) findViewById(R.id.layout_root));
-		// ImageView image = (ImageView) layout.findViewById(R.id.image);
-		// image.setImageResource(R.drawable.icon);
-		// try {
-		// TextView text = (TextView) layout.findViewById(R.id.text);
-		// text.setText(getString(R.string.app_name) + "　Ver. " +
-		// getCurrentVersion());
-		// } catch (NameNotFoundException e) {
-		// }
-		// new AlertDialog.Builder(this).setView(layout)
-		// .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-		// public void onClick(DialogInterface dialog, int item) {
-		// }
-		// }).show();
-		// ret = true;
-		// break;
 		default:
 			ret = super.onOptionsItemSelected(item);
 			break;
@@ -142,62 +123,6 @@ public abstract class BaseActivity extends Activity implements Constants {
 		return true;
 	}
 
-//	/**
-//	 * バージョンアップを通知します。
-//	 */
-//	protected void showVersionUpInfo() {
-//		HtmlTask htmlTask = new HtmlTask(getString(string.play_store_url));
-//		htmlTask.execute();
-//		String html;
-//		try {
-//			html = htmlTask.get();
-//		} catch (InterruptedException e1) {
-//			return;
-//		} catch (ExecutionException e1) {
-//			return;
-//		}
-//
-//		PlayStoreParser parser = new PlayStoreParser();
-//		String storeVersion = parser.parseString(html);
-//		String currentVersion = "0";
-//		try {
-//			currentVersion = getCurrentVersion();
-//		} catch (NameNotFoundException e) {
-//		}
-//
-//		if (StringUtil.isEmpty(storeVersion)) {
-//			storeVersion = "0";
-//		}
-//
-//		if (StringUtil.isEmpty(currentVersion)) {
-//			storeVersion = "0";
-//		}
-//
-//		if (!NumberUtil.isNumber(storeVersion)) {
-//			return;
-//		}
-//
-//		int iStoreVersion = Integer.parseInt(StringUtil.remove(storeVersion, "\\."));
-//		int iCurrentVersion = Integer.parseInt(StringUtil.remove(currentVersion, "\\."));
-//
-//		if (iStoreVersion > iCurrentVersion) {
-//			LayoutInflater inflater = LayoutInflater.from(this);
-//			View layout = inflater.inflate(R.layout.new_version_dialog,
-//					(ViewGroup) findViewById(R.id.layout_root));
-//			ImageView image = (ImageView) layout.findViewById(R.id.image);
-//			image.setImageResource(R.drawable.icon);
-//
-//			new AlertDialog.Builder(this).setView(layout)
-//					.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//						public void onClick(DialogInterface dialog, int item) {
-//							Uri uri = Uri.parse(getString(string.market_url));
-//							Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//							startActivity(intent);
-//						}
-//					}).show();
-//		}
-//	}
-
 	/**
 	 * アナリティクスへ送信します。
 	 */
@@ -207,32 +132,4 @@ public abstract class BaseActivity extends Activity implements Constants {
 		t.setScreenName(getClass().getSimpleName());
 		t.send(new HitBuilders.AppViewBuilder().build());
 	}
-
-//	/**
-//	 *
-//	 * @return
-//	 * @throws NameNotFoundException
-//	 */
-//	private String getCurrentVersion() throws NameNotFoundException {
-//		PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(),
-//				PackageManager.GET_META_DATA);
-//		return packageInfo.versionName;
-//	}
-
-//	/**
-//	 * PlayストアHTML取得タスククラスです。
-//	 */
-//	private class HtmlTask extends AsyncTask<Void, Void, String> {
-//		private String _url;
-//
-//		public HtmlTask(String url) {
-//			_url = url;
-//		}
-//
-//		@Override
-//		protected String doInBackground(Void... paramArrayOfParams) {
-//			String html = HttpUtil.getHtml(_url);
-//			return html;
-//		}
-//	}
 }

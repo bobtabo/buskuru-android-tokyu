@@ -55,18 +55,6 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 		StationHistoryAdapter adapter = new StationHistoryAdapter(this, android.R.layout.simple_list_item_1);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
-//		listView.setOnItemLongClickListener(this);
-
-//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//				android.R.layout.simple_list_item_1);
-//		StationHistory parameter = new StationHistory();
-//		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
-//		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-//		List<StationHistory> list = stationHistoryLogic.getListByFromto(parameter);
-//		for (StationHistory entity : list) {
-//			adapter.add(entity.getName());
-//		}
-//		listView.setAdapter(adapter);
 	}
 
 	/**
@@ -114,35 +102,6 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 					Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		}
 	}
-
-//	/**
-//	 * {@inheritDoc}
-//	 */
-//	@Override
-//	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
-//			long paramLong) {
-//		final Object name = paramAdapterView.getItemAtPosition(paramInt);
-//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StationHistoryActivity.this);
-//		alertDialog.setTitle("履歴の削除");
-//		alertDialog.setItems(R.array.list_history_action, new DialogInterface.OnClickListener() {
-//			@SuppressWarnings("unchecked")
-//			@Override
-//			public void onClick(DialogInterface dialog, int which) {
-//				if (which == 0) {
-//					StationHistory parameter = new StationHistory();
-//					parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
-//					parameter.setName((String) name);
-//					parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-//					stationHistoryLogic.deleteByName(parameter);
-//					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
-//					adapter.remove((String) name);
-//					adapter.notifyDataSetChanged();
-//				}
-//			}
-//		});
-//		alertDialog.create().show();
-//		return false;
-//	}
 
 	/**
 	 * {@inheritDoc}

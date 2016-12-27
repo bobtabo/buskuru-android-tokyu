@@ -24,6 +24,7 @@ import org.buskuru.tokyu.service.AccessNoticeService;
 import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.StringUtil;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -70,6 +71,7 @@ public class FavoritesAdapter extends ArrayAdapter<String> implements Constants,
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressLint("InflateParams")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {

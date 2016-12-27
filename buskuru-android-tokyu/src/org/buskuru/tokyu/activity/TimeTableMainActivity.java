@@ -88,7 +88,6 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 
 		listView = (ListView) findViewById(R.id.ListView01);
 		listView.setOnItemClickListener(this);
-//		listView.setOnItemLongClickListener(this);
 		listView.setScrollingCacheEnabled(false);
 
 		BusNaviApplication app = (BusNaviApplication) this.getApplication();
@@ -133,34 +132,6 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 			startTimeTableActivity(routeDto.fromMap.get("name"));
 		}
 	}
-
-//	/**
-//	 * {@inheritDoc}
-//	 */
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView,
-//			final int paramInt, long paramLong) {
-//		final Map<String, Object> map = (Map<String, Object>) listView.getItemAtPosition(paramInt);
-//
-//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
-//		alertDialog.setTitle("選択して下さい");
-//		alertDialog.setItems(R.array.list_table_time_favorites_action,
-//				new DialogInterface.OnClickListener() {
-//					@Override
-//					public void onClick(DialogInterface dialog, int which) {
-//						if (which == 0) {
-//							timeTableFavoritesLogic.deleteById((Integer) map.get("id"));
-//							TimeTableFavoritesAdapter adapter = (TimeTableFavoritesAdapter) listView
-//									.getAdapter();
-//							adapter.getData().remove(paramInt);
-//							adapter.notifyDataSetChanged();
-//						}
-//					}
-//				});
-//		alertDialog.create().show();
-//		return false;
-//	}
 
 	/**
 	 * {@inheritDoc}
