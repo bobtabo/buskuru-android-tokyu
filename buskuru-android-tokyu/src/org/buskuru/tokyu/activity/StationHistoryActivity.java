@@ -5,9 +5,12 @@
  */
 package org.buskuru.tokyu.activity;
 
+import java.util.HashMap;
+
 /* $Id: StationHistoryActivity.java 187 2014-05-26 15:58:55Z nagashiba $ */
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +26,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
@@ -51,30 +53,37 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 				getIntent().getStringExtra("fromto"));
 
 		listView = (ListView) this.findViewById(R.id.ListView01);
-
-		StationHistoryAdapter adapter = new StationHistoryAdapter(this, android.R.layout.simple_list_item_1);
-		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
-
-		ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
-		adapter.clear();
 
 		StationHistory parameter = new StationHistory();
 		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
 		List<StationHistory> list = stationHistoryLogic.getListByFromto(parameter);
+
+		List<Map<String, Object>> mapList = new LinkedList<Map<String, Object>>();
 		for (StationHistory entity : list) {
-			adapter.add(entity.getName());
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("id", entity.getId());
+			map.put("bus_id", entity.getBusId());
+			map.put("station_id", entity.getStationId());
+			map.put("name", entity.getName());
+			map.put("fromto", entity.getFromto());
+
+			mapList.add(map);
 		}
+
+		StationHistoryAdapter adapter = new StationHistoryAdapter(StationHistoryActivity.this, mapList,
+				R.layout.station_history_row, new String[] { "id", "name" }, new int[] { android.R.id.text1 });
+
+		listView.setAdapter(adapter);
 	}
 
 	/**
