@@ -89,12 +89,15 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
 			long paramLong) {
+		final Map<String, Object> map = (Map<String, Object>) listView.getItemAtPosition(paramInt);
+
 		StationHistory parameter = new StationHistory();
 		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
-		parameter.setName((String) listView.getItemAtPosition(paramInt));
+		parameter.setName((String) map.get("name"));
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
 		StationHistory result = stationHistoryLogic.getEntityByName(parameter);
 
