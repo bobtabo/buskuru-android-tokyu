@@ -704,10 +704,11 @@ containing a value of this type.
         public static final int start=0x7f03000f;
         public static final int station=0x7f030010;
         public static final int station_history=0x7f030011;
-        public static final int station_list=0x7f030012;
-        public static final int time_table=0x7f030013;
-        public static final int time_table_bus=0x7f030014;
-        public static final int time_table_main=0x7f030015;
+        public static final int station_history_row=0x7f030012;
+        public static final int station_list=0x7f030013;
+        public static final int time_table=0x7f030014;
+        public static final int time_table_bus=0x7f030015;
+        public static final int time_table_main=0x7f030016;
     }
     public static final class menu {
         public static final int menu=0x7f0e0000;

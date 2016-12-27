@@ -13,18 +13,16 @@ import java.util.Map;
 
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
+import org.buskuru.tokyu.adapter.StationHistoryAdapter;
 import org.buskuru.tokyu.db.entity.StationHistory;
 import org.buskuru.tokyu.db.logic.StationHistoryLogic;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -34,8 +32,7 @@ import android.widget.ListView;
  * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
-public class StationHistoryActivity extends BaseActivity implements OnItemClickListener,
-		OnItemLongClickListener {
+public class StationHistoryActivity extends BaseActivity implements OnItemClickListener {
 	private ListView listView;
 	// private String fromto;
 	private StationHistoryLogic stationHistoryLogic;
@@ -54,11 +51,35 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 				getIntent().getStringExtra("fromto"));
 
 		listView = (ListView) this.findViewById(R.id.ListView01);
-		listView.setOnItemClickListener(this);
-		listView.setOnItemLongClickListener(this);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1);
+		StationHistoryAdapter adapter = new StationHistoryAdapter(this, android.R.layout.simple_list_item_1);
+		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(this);
+//		listView.setOnItemLongClickListener(this);
+
+//		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+//				android.R.layout.simple_list_item_1);
+//		StationHistory parameter = new StationHistory();
+//		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
+//		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
+//		List<StationHistory> list = stationHistoryLogic.getListByFromto(parameter);
+//		for (StationHistory entity : list) {
+//			adapter.add(entity.getName());
+//		}
+//		listView.setAdapter(adapter);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
+		adapter.clear();
+
 		StationHistory parameter = new StationHistory();
 		parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
 		parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
@@ -66,7 +87,6 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 		for (StationHistory entity : list) {
 			adapter.add(entity.getName());
 		}
-		listView.setAdapter(adapter);
 	}
 
 	/**
@@ -95,34 +115,34 @@ public class StationHistoryActivity extends BaseActivity implements OnItemClickL
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
-			long paramLong) {
-		final Object name = paramAdapterView.getItemAtPosition(paramInt);
-		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StationHistoryActivity.this);
-		alertDialog.setTitle("履歴の削除");
-		alertDialog.setItems(R.array.list_history_action, new DialogInterface.OnClickListener() {
-			@SuppressWarnings("unchecked")
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				if (which == 0) {
-					StationHistory parameter = new StationHistory();
-					parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
-					parameter.setName((String) name);
-					parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
-					stationHistoryLogic.deleteByName(parameter);
-					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
-					adapter.remove((String) name);
-					adapter.notifyDataSetChanged();
-				}
-			}
-		});
-		alertDialog.create().show();
-		return false;
-	}
+//	/**
+//	 * {@inheritDoc}
+//	 */
+//	@Override
+//	public boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt,
+//			long paramLong) {
+//		final Object name = paramAdapterView.getItemAtPosition(paramInt);
+//		AlertDialog.Builder alertDialog = new AlertDialog.Builder(StationHistoryActivity.this);
+//		alertDialog.setTitle("履歴の削除");
+//		alertDialog.setItems(R.array.list_history_action, new DialogInterface.OnClickListener() {
+//			@SuppressWarnings("unchecked")
+//			@Override
+//			public void onClick(DialogInterface dialog, int which) {
+//				if (which == 0) {
+//					StationHistory parameter = new StationHistory();
+//					parameter.setBusId(((BusNaviApplication) getApplication()).getBusId());
+//					parameter.setName((String) name);
+//					parameter.setFromto(getBusNaviApplication().getStationFromToDto().getFromto());
+//					stationHistoryLogic.deleteByName(parameter);
+//					ArrayAdapter<String> adapter = (ArrayAdapter<String>) listView.getAdapter();
+//					adapter.remove((String) name);
+//					adapter.notifyDataSetChanged();
+//				}
+//			}
+//		});
+//		alertDialog.create().show();
+//		return false;
+//	}
 
 	/**
 	 * {@inheritDoc}
