@@ -126,7 +126,6 @@ public abstract class BaseActivity extends Activity implements Constants {
 	/**
 	 * アナリティクスへ送信します。
 	 */
-	@SuppressWarnings("deprecation")
 	protected final void sendAnalytics() {
 		Tracker t = getBusNaviApplication().getTracker();
 		t.setScreenName(getClass().getSimpleName());

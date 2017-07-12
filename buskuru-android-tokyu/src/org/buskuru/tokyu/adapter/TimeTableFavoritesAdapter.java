@@ -114,7 +114,7 @@ public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickL
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unlikely-arg-type" })
 	public void onClick(View v) {
 		Map<String, Object> map = (Map<String, Object>) ((Button) v).getTag();
 		TimeTableFavorites entity = new TimeTableFavorites();

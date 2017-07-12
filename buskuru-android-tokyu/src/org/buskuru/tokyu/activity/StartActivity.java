@@ -64,7 +64,6 @@ public class StartActivity extends FragmentActivity {
 	/**
 	 * Google Play開発者サービスを確認します。
 	 */
-	@SuppressWarnings("deprecation")
 	private void checkServiceAvailable() {
 		int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
 		if (ConnectionResult.SUCCESS == resultCode) {

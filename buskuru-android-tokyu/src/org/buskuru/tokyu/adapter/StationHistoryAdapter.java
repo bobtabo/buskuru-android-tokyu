@@ -93,7 +93,7 @@ public class StationHistoryAdapter extends SimpleAdapter implements Constants, O
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "unchecked", "unlikely-arg-type" })
 	@Override
 	public void onClick(View v) {
 		Button button = (Button) v;
