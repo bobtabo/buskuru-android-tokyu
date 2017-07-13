@@ -53,7 +53,7 @@ import android.widget.TextView;
 /**
  * 時刻表メイン画面を処理するアクティビティクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 332 $ $Date: 2015-01-21 01:12:04 +0900 (水, 21 1 2015) $
  */
 public class TimeTableMainActivity extends BaseActivity implements OnItemClickListener,

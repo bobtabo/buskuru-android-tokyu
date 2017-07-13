@@ -27,7 +27,7 @@ import android.util.Log;
 /**
  * データベースのヘルパークラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {

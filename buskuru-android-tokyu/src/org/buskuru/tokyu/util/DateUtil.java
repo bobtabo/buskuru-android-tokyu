@@ -25,7 +25,7 @@ import android.annotation.SuppressLint;
 /**
  * 日付関連のユーティリティクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 362 $ $Date: 2015-01-25 19:26:55 +0900 (日, 25 1 2015) $
  */
 public class DateUtil {

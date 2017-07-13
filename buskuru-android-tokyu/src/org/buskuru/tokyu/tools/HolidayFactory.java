@@ -18,7 +18,7 @@ import org.buskuru.tokyu.util.DateUtil;
 /**
  * 祝日を生成するクラスです。
  * 
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 302 $ $Date: 2015-01-05 22:56:13 +0900 (月, 05 1 2015) $
  */
 public class HolidayFactory {

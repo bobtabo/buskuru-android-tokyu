@@ -23,7 +23,7 @@ import android.view.Window;
 /**
  * 画面を処理する規定アクティビティクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 459 $ $Date: 2015-02-03 00:22:31 +0900 (火, 03 2 2015) $
  */
 public abstract class BaseActivity extends Activity implements Constants {

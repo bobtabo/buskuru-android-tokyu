@@ -33,7 +33,7 @@ import android.preference.PreferenceManager;
 /**
  * バスナビアプリケーションクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 358 $ $Date: 2015-01-25 17:48:58 +0900 (日, 25 1 2015) $
  */
 public class BusNaviApplication extends Application implements Constants {

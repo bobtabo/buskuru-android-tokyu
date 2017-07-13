@@ -31,7 +31,7 @@ import android.widget.TextView;
 /**
  * 履歴リストのアダプタクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  */
 public class StationHistoryAdapter extends SimpleAdapter implements Constants, OnClickListener {
 	private List<? extends Map<String, ?>> _data;

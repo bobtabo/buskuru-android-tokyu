@@ -31,7 +31,7 @@ import android.widget.ListView;
 /**
  * トップ画面を処理するアクティビティクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
 @UseMenu

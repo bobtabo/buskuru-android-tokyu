@@ -44,7 +44,7 @@ import android.widget.GridView;
 /**
  * 50音停留所検索画面を処理するアクティビティクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 253 $ $Date: 2014-11-28 01:22:22 +0900 (金, 28 11 2014) $
  */
 public class StationActivity extends BaseActivity implements OnItemClickListener {

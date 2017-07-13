@@ -14,7 +14,7 @@ import org.buskuru.tokyu.util.StringUtil;
 /**
  * 
  * 
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StationFromToDto implements Serializable {

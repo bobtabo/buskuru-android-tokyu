@@ -41,7 +41,7 @@ import android.widget.TextView;
 /**
  * お気に入りリストのアダプタクラスです。
  *
- * @author <a href="mailto:nagashiba@adv-co.com">Satoshi Nagashiba</a>
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  * @version $Revision: 416 $ $Date: 2015-01-28 13:21:02 +0900 (水, 28 1 2015) $
  */
 public class FavoritesAdapter extends ArrayAdapter<String> implements Constants, OnClickListener {
