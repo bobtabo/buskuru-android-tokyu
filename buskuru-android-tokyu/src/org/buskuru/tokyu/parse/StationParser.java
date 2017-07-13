@@ -1,11 +1,9 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.parse;
-
-/* $Id: StationParser.java 253 2014-11-27 16:22:22Z nagashiba $ */
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,9 +19,8 @@ import org.htmlcleaner.TagNode;
 
 /**
  * バス停HTMLを解析するクラスです。
- * 
+ *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 253 $ $Date: 2014-11-28 01:22:22 +0900 (金, 28 11 2014) $
  */
 public class StationParser extends BaseHtmlParser {
 
@@ -31,7 +28,7 @@ public class StationParser extends BaseHtmlParser {
 
 	/**
 	 * コンストラクタ。
-	 * 
+	 *
 	 * @param item
 	 *            かな検索文字列
 	 */
@@ -88,7 +85,7 @@ public class StationParser extends BaseHtmlParser {
 
 	/**
 	 * HTMLを解析し、バス停マップを作成します。
-	 * 
+	 *
 	 * @param html
 	 *            HTML
 	 * @return バス停マップ

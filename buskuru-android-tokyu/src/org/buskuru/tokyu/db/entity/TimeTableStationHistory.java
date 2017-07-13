@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.db.entity;
 
-/* $Id: TimeTableStationHistory.java 469 2015-02-04 16:36:32Z nagashiba $ */
-
 import java.io.Serializable;
 
 import com.j256.ormlite.field.DatabaseField;
@@ -16,7 +14,6 @@ import com.j256.ormlite.table.DatabaseTable;
  * バス停履歴を格納するエンティティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
 @DatabaseTable(tableName = "time_table_station_history")
 public class TimeTableStationHistory implements Serializable {

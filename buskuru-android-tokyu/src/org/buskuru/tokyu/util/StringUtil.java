@@ -1,17 +1,14 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.util;
 
-/* $Id: StringUtil.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 /**
  * 文字列に対する共通処理を行います。
- * 
- * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
+ *
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>ßß
  */
 public final class StringUtil {
 
@@ -22,7 +19,7 @@ public final class StringUtil {
 
 	/**
 	 * 文字列が Null であるか確認します。
-	 * 
+	 *
 	 * @param str
 	 *            文字列
 	 * @return Null の場合 true を返します
@@ -33,7 +30,7 @@ public final class StringUtil {
 
 	/**
 	 * 文字列が Null ではないか確認します。
-	 * 
+	 *
 	 * @param str
 	 *            文字列
 	 * @return Null ではない場合 true を返します
@@ -44,7 +41,7 @@ public final class StringUtil {
 
 	/**
 	 * 文字列を返します。
-	 * 
+	 *
 	 * @param str
 	 *            対象文字列
 	 * @param nullStr
@@ -57,7 +54,7 @@ public final class StringUtil {
 
 	/**
 	 * 文字列を区切り文字で分割します。
-	 * 
+	 *
 	 * @param str
 	 *            文字列
 	 * @param delimiter
@@ -70,7 +67,7 @@ public final class StringUtil {
 
 	/**
 	 * 文字列を濁音に変換します。
-	 * 
+	 *
 	 * @param str
 	 *            文字列
 	 * @return 変換した文字列
@@ -86,7 +83,7 @@ public final class StringUtil {
 
 	/**
 	 * 指定文字列を削除した文字列を返します。
-	 * 
+	 *
 	 * @param str
 	 *            対象文字列
 	 * @param target
@@ -103,7 +100,7 @@ public final class StringUtil {
 
 	/**
 	 * 指定文字列を置換した文字列を返します。
-	 * 
+	 *
 	 * @param str
 	 *            対象文字列
 	 * @param target

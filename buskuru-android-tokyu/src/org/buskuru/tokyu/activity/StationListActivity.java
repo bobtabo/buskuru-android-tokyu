@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: StationListActivity.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +33,6 @@ import android.widget.ListView;
  * 停留所選択を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StationListActivity extends BaseActivity implements OnItemClickListener {
 	private ListView listView;

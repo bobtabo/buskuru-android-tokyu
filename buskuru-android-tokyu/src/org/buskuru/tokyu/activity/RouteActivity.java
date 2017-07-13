@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: RouteActivity.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -42,7 +40,6 @@ import android.widget.TextView;
  * 経路検索画面を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class RouteActivity extends BaseActivity implements OnClickListener {
 

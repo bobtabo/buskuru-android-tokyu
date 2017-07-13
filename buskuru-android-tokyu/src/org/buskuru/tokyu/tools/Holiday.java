@@ -1,6 +1,6 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.tools;
@@ -12,20 +12,17 @@ import java.util.List;
 import org.buskuru.tokyu.dto.HolidayDto;
 import org.buskuru.tokyu.util.DateUtil;
 
-/* $Id: Holiday.java 302 2015-01-05 13:56:13Z nagashiba $ */
-
 /**
  * 休日を処理するクラスです。
- * 
+ *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 302 $ $Date: 2015-01-05 22:56:13 +0900 (月, 05 1 2015) $
  */
 public class Holiday {
 	private Date _date;
 
 	/**
 	 * コンストラクタ
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 */
@@ -35,7 +32,7 @@ public class Holiday {
 
 	/**
 	 * 休日であるか確認します。
-	 * 
+	 *
 	 * @return 休日の場合 true を返します
 	 */
 	public boolean isHoliday() {
@@ -71,7 +68,7 @@ public class Holiday {
 
 	/**
 	 * 土曜日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 土曜日の場合 true を返します
@@ -83,7 +80,7 @@ public class Holiday {
 
 	/**
 	 * 日曜日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 日曜日の場合 true を返します
@@ -95,7 +92,7 @@ public class Holiday {
 
 	/**
 	 * 通常の祝日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 * @return 通常の祝日の場合 true を返します
 	 */
@@ -135,7 +132,7 @@ public class Holiday {
 
 	/**
 	 * 春分の日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 * @return 春分の日の場合 true を返します
 	 */
@@ -153,7 +150,7 @@ public class Holiday {
 
 	/**
 	 * 秋分の日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 * @return 秋分の日の場合 true を返します
 	 */
@@ -171,7 +168,7 @@ public class Holiday {
 
 	/**
 	 * 国民の休日（本日の前後が祝日）であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 国民の休日の場合 true を返します
@@ -193,7 +190,7 @@ public class Holiday {
 
 	/**
 	 * 振替休日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 振替休日の場合 true を返します
@@ -209,7 +206,7 @@ public class Holiday {
 
 	/**
 	 * 国民の休日（本日の前後が祝日）以外の祝日であるか確認します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 国民の休日以外の祝日の場合 true を返します

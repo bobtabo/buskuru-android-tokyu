@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.util;
 
-/* $Id: HttpUtil.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;

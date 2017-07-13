@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: NavigationActivity.java 357 2015-01-25 08:48:38Z nagashiba $ */
-
 import java.util.concurrent.TimeUnit;
 
 import org.buskuru.tokyu.BusNaviApplication;
@@ -32,7 +30,6 @@ import android.webkit.WebViewClient;
  * バス接近情報を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 357 $ $Date: 2015-01-25 17:48:38 +0900 (日, 25 1 2015) $
  */
 @UseMenu
 public class NavigationActivity extends BaseActivity implements Runnable {

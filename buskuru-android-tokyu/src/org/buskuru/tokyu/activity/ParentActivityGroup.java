@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: ParentActivityGroup.java 408 2015-01-26 17:14:34Z nagashiba $ */
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,7 +40,6 @@ import android.widget.LinearLayout;
  * アクティビティを管理するクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 408 $ $Date: 2015-01-27 02:14:34 +0900 (火, 27 1 2015) $
  */
 @SuppressWarnings("deprecation")
 public class ParentActivityGroup extends ActivityGroup implements OnClickListener {

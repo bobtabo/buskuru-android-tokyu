@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.adapter;
 
-/* $Id: TimeTableFavoritesAdapter.java 331 2015-01-20 16:07:41Z nagashiba $ */
-
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +35,6 @@ import android.widget.TextView;
  * 停留所リストのアダプタクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 331 $ $Date: 2015-01-21 01:07:41 +0900 (水, 21 1 2015) $
  */
 public class TimeTableFavoritesAdapter extends SimpleAdapter implements OnClickListener {
 	private List<? extends Map<String, ?>> _data;

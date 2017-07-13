@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: MainActivity.java 428 2015-01-28 17:43:56Z nagashiba $ */
-
 import java.util.List;
 
 import org.buskuru.tokyu.R;
@@ -32,7 +30,6 @@ import android.widget.ListView;
  * トップ画面を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
 @UseMenu
 public class MainActivity extends BaseActivity implements OnItemClickListener {

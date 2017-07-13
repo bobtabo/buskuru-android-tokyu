@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.db.logic;
 
-/* $Id: AbstractLogic.java 469 2015-02-04 16:36:32Z nagashiba $ */
-
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.sql.SQLException;
@@ -16,20 +14,19 @@ import java.util.List;
 import org.buskuru.tokyu.db.DatabaseHelper;
 import org.buskuru.tokyu.util.CollectionUtil;
 
-import android.content.Context;
-import android.util.Log;
-
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.stmt.DeleteBuilder;
 import com.j256.ormlite.stmt.PreparedDelete;
 import com.j256.ormlite.stmt.PreparedQuery;
 import com.j256.ormlite.stmt.QueryBuilder;
 
+import android.content.Context;
+import android.util.Log;
+
 /**
  * 基底Logicクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
 public class AbstractLogic<T> {
 

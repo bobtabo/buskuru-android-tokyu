@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: StationActivity.java 253 2014-11-27 16:22:22Z nagashiba $ */
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -45,7 +43,6 @@ import android.widget.GridView;
  * 50音停留所検索画面を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 253 $ $Date: 2014-11-28 01:22:22 +0900 (金, 28 11 2014) $
  */
 public class StationActivity extends BaseActivity implements OnItemClickListener {
 	private Handler handler = new Handler();

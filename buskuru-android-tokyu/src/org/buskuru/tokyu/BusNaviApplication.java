@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu;
 
-/* $Id: BusNaviApplication.java 358 2015-01-25 08:48:58Z nagashiba $ */
-
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -34,7 +32,6 @@ import android.preference.PreferenceManager;
  * バスナビアプリケーションクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 358 $ $Date: 2015-01-25 17:48:58 +0900 (日, 25 1 2015) $
  */
 public class BusNaviApplication extends Application implements Constants {
 

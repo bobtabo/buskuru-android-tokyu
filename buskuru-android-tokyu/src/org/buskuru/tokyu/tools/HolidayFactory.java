@@ -1,11 +1,9 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.tools;
-
-/* $Id: HolidayFactory.java 302 2015-01-05 13:56:13Z nagashiba $ */
 
 import java.util.Calendar;
 import java.util.Date;
@@ -17,15 +15,14 @@ import org.buskuru.tokyu.util.DateUtil;
 
 /**
  * 祝日を生成するクラスです。
- * 
+ *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 302 $ $Date: 2015-01-05 22:56:13 +0900 (月, 05 1 2015) $
  */
 public class HolidayFactory {
 
 	/**
 	 * 対象月の祝日を取得します。
-	 * 
+	 *
 	 * @param date
 	 *            日付
 	 * @return 対象月の祝日
@@ -78,7 +75,7 @@ public class HolidayFactory {
 
 	/**
 	 * 1月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getJanuary() {
@@ -90,7 +87,7 @@ public class HolidayFactory {
 
 	/**
 	 * 2月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getFebruary() {
@@ -101,7 +98,7 @@ public class HolidayFactory {
 
 	/**
 	 * 3月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getMarch() {
@@ -111,7 +108,7 @@ public class HolidayFactory {
 
 	/**
 	 * 4月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getApril() {
@@ -122,7 +119,7 @@ public class HolidayFactory {
 
 	/**
 	 * 5月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getMay() {
@@ -134,7 +131,7 @@ public class HolidayFactory {
 
 	/**
 	 * 6月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getJune() {
@@ -144,7 +141,7 @@ public class HolidayFactory {
 
 	/**
 	 * 7月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getJuly() {
@@ -155,7 +152,7 @@ public class HolidayFactory {
 
 	/**
 	 * 8月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getAugust() {
@@ -165,7 +162,7 @@ public class HolidayFactory {
 
 	/**
 	 * 9月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getSeptember() {
@@ -176,7 +173,7 @@ public class HolidayFactory {
 
 	/**
 	 * 10月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getOctober() {
@@ -187,7 +184,7 @@ public class HolidayFactory {
 
 	/**
 	 * 11月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getNovember() {
@@ -199,7 +196,7 @@ public class HolidayFactory {
 
 	/**
 	 * 12月の祝日リストを取得します。
-	 * 
+	 *
 	 * @return 祝日リスト
 	 */
 	public static List<HolidayDto> getDecember() {
@@ -210,7 +207,7 @@ public class HolidayFactory {
 
 	/**
 	 * 祝日オブジェクトを生成します。
-	 * 
+	 *
 	 * @param name
 	 *            祝日名
 	 * @param year

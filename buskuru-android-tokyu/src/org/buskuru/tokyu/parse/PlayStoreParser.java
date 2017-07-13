@@ -1,15 +1,14 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.parse;
 
 /**
  * PlayストアHTMLを解析するクラスです。
- * 
+ *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 275 $ $Date: 2014-12-25 01:52:43 +0900 (木, 25 12 2014) $
  */
 public class PlayStoreParser extends BaseHtmlParser {
 

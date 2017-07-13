@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: TimeTableActivity.java 428 2015-01-28 17:43:56Z nagashiba $ */
-
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
@@ -37,7 +35,6 @@ import android.webkit.WebViewClient;
  * 時刻表画面を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
 @SuppressWarnings("deprecation")
 @UseMenu

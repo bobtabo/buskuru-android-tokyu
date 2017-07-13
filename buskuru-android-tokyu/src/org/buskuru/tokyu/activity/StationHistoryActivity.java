@@ -32,7 +32,6 @@ import android.widget.ListView;
  * 停留所履歴を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StationHistoryActivity extends BaseActivity implements OnItemClickListener {
 	private ListView listView;

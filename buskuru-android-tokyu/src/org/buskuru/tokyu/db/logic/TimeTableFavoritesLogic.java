@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.db.logic;
 
-/* $Id: TimeTableFavoritesLogic.java 469 2015-02-04 16:36:32Z nagashiba $ */
-
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,7 +18,6 @@ import android.content.Context;
  * 時刻表お気に入りLogicクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 469 $ $Date: 2015-02-05 01:36:32 +0900 (木, 05 2 2015) $
  */
 public class TimeTableFavoritesLogic extends AbstractLogic<TimeTableFavorites> {
 

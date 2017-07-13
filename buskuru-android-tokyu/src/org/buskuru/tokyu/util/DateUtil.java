@@ -20,13 +20,10 @@ import java.util.TimeZone;
 
 import android.annotation.SuppressLint;
 
-/* $Id: DateUtil.java 362 2015-01-25 10:26:55Z nagashiba $ */
-
 /**
  * 日付関連のユーティリティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 362 $ $Date: 2015-01-25 19:26:55 +0900 (日, 25 1 2015) $
  */
 public class DateUtil {
 

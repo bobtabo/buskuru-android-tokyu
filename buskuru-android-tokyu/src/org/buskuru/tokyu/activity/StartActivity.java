@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.activity;
 
-/* $Id: StartActivity.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.util.MessageUtil;
 
@@ -23,7 +21,6 @@ import android.support.v4.app.FragmentActivity;
  * スタート画面を処理するアクティビティクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class StartActivity extends FragmentActivity {
 

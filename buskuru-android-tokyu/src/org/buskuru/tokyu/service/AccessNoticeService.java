@@ -5,8 +5,6 @@
  */
 package org.buskuru.tokyu.service;
 
-/* $Id: AccessNoticeService.java 428 2015-01-28 17:43:56Z nagashiba $ */
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -54,7 +52,6 @@ import android.widget.Toast;
  * バス接近情報を通知するサービスクラスです。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 428 $ $Date: 2015-01-29 02:43:56 +0900 (木, 29 1 2015) $
  */
 @SuppressWarnings("deprecation")
 public class AccessNoticeService extends Service implements Constants {
@@ -274,6 +271,7 @@ public class AccessNoticeService extends Service implements Constants {
 	 * @param src
 	 *            HTMLソース
 	 */
+	@SuppressLint("InflateParams")
 	@JavascriptInterface
 	public synchronized void viewSource(final String src) {
 		handler.post(new Runnable() {

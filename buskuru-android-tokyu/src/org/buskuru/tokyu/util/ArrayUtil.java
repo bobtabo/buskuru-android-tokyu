@@ -1,26 +1,23 @@
 /*
  * BusKuru is a Busnavi program developed by BobTabo.
- * 
+ *
  * Copyright (c) 2011 BobTabo. All Rights Reserved.
  */
 package org.buskuru.tokyu.util;
-
-/* $Id: ArrayUtil.java 187 2014-05-26 15:58:55Z nagashiba $ */
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 配列のユーティリティクラスです。
- * 
+ *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public class ArrayUtil {
 
 	/**
 	 * 配列をリストに変換します。
-	 * 
+	 *
 	 * @param array
 	 *            配列
 	 * @return リスト
@@ -35,7 +32,7 @@ public class ArrayUtil {
 
 	/**
 	 * 配列および配列の全要素が Null であるか確認します。
-	 * 
+	 *
 	 * @param array
 	 *            配列
 	 * @return 配列および配列の全要素が Null の場合 true を返します
@@ -58,7 +55,7 @@ public class ArrayUtil {
 
 	/**
 	 * 配列および配列の全要素が Null でないか確認します。
-	 * 
+	 *
 	 * @param array
 	 *            配列
 	 * @return 配列および配列の全要素が Null でない場合 true を返します

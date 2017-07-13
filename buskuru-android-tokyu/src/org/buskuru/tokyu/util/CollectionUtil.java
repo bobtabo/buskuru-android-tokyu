@@ -5,15 +5,12 @@
  */
 package org.buskuru.tokyu.util;
 
-/* $Id: CollectionUtil.java 187 2014-05-26 15:58:55Z nagashiba $ */
-
 import java.util.Collection;
 
 /**
  * コレクションに対する共通処理を行います。
  *
  * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
- * @version $Revision: 187 $ $Date: 2014-05-27 00:58:55 +0900 (火, 27 5 2014) $
  */
 public final class CollectionUtil {
 
