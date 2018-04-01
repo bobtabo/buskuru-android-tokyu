@@ -36,7 +36,7 @@
         <dependency>
             <groupId>android.support</groupId>
             <artifactId>compatibility-v4</artifactId>
-            <version>22.2.1</version>
+            <version>19.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.android.analytics</groupId>
@@ -56,6 +56,22 @@
 		</dependency>
     </dependencies>
 	<build>
+<!-- 		<pluginManagement> -->
+<!-- 			<plugins> -->
+<!-- 				<plugin> -->
+<!-- 					<groupId>com.jayway.maven.plugins.android.generation2</groupId> -->
+<!-- 					<artifactId>android-maven-plugin</artifactId> -->
+<!-- 					<version>3.9.0-rc.2</version> -->
+<!-- 					<configuration> -->
+<!-- 						<sdk> -->
+<!-- 							<platform>17</platform> -->
+<!-- 							<path>C:\Users\satoshi\android-sdks\platforms\android-17</path> -->
+<!-- 						</sdk> -->
+<!-- 					</configuration> -->
+<!-- 					<extensions>true</extensions> -->
+<!-- 				</plugin> -->
+<!-- 			</plugins> -->
+<!-- 		</pluginManagement> -->
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -68,6 +84,7 @@
 						<path>${ANDROID_HOME}</path>
 					</sdk>
 				</configuration>
+
 				<extensions>true</extensions>
 			</plugin>
 			<plugin>
@@ -90,14 +107,32 @@
 <!-- 	    </repository> -->
 <!-- 	</repositories> -->
 
+	<repositories>
+		<repository>
+			<id>bobtabo-station</id>
+			<url>http://bobtabo-buhibuhi.synology.me/m2/</url>
+		</repository>
+		<repository>
+			<id>Central Repository</id>
+			<url>http://central.maven.org/maven2/</url>
+		</repository>
+	</repositories>
 	<pluginRepositories>
 <!-- 		<pluginRepository> -->
 <!-- 	        <id>mvnrepository</id> -->
 <!-- 	        <url>http://mvnrepository.com/artifact/</url> -->
 <!-- 		</pluginRepository> -->
+<!-- 		<pluginRepository> -->
+<!-- 	        <id>jayway-snapshots</id> -->
+<!-- 	        <url>http://oss.sonatype.org/content/repositories/jayway/</url> -->
+<!-- 		</pluginRepository> -->
 		<pluginRepository>
-	        <id>jayway-snapshots</id>
-	        <url>http://oss.sonatype.org/content/repositories/jayway/</url>
+			<id>bobtabo-station</id>
+			<url>http://bobtabo-buhibuhi.synology.me/m2/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>Central Repository</id>
+			<url>http://central.maven.org/maven2/</url>
 		</pluginRepository>
 	</pluginRepositories>
 

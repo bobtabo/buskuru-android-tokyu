@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Shift_JIS"?>
 <project basedir="." default="release" name="busnavi-android-tokyu-build"
 	xmlns:artifact="antlib:org.apache.maven.artifact.ant">
-    
+
 	<property file="build.properties" />
 
 	<target name="release" description="リリースファイルを作成する">
@@ -31,7 +31,7 @@
         <rename src="buskuru-zipalign.apk" dest="buskuru.apk"/>
 -->
    </target>
-	
+
 <!--
 		<target name="deploy" depends="release" description="実機orエミュレータへデプロイする">
         <sequential>

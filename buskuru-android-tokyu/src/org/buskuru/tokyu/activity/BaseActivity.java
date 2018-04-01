@@ -58,15 +58,11 @@ public abstract class BaseActivity extends Activity implements Constants {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		boolean ret = true;
-		switch (item.getItemId()) {
-		case R.id.setting:
+		if (item.getItemId() == R.id.setting) {
 			((ParentActivityGroup) getParent()).showActivity(MainPreferenceActivity.class, null);
-
 			ret = true;
-			break;
-		default:
+		} else {
 			ret = super.onOptionsItemSelected(item);
-			break;
 		}
 		return ret;
 	}
