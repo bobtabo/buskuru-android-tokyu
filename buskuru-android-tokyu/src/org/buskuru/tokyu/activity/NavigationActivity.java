@@ -5,14 +5,13 @@
  */
 package org.buskuru.tokyu.activity;
 
-import java.util.concurrent.TimeUnit;
-
 import org.buskuru.tokyu.BusNaviApplication;
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.annotation.UseMenu;
 import org.buskuru.tokyu.db.entity.Favorites;
 import org.buskuru.tokyu.db.logic.FavoritesLogic;
 import org.buskuru.tokyu.dto.NavigationDto;
+import org.buskuru.tokyu.util.TimeUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -62,10 +61,7 @@ public class NavigationActivity extends BaseActivity implements Runnable {
 	 */
 	@Override
 	public void run() {
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-		}
+		TimeUtil.sleepSeconds(1);
 
 		Intent intent = getIntent();
 		navigationDto = (NavigationDto) intent.getSerializableExtra("navigationDto");

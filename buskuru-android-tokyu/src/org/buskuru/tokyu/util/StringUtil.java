@@ -8,7 +8,7 @@ package org.buskuru.tokyu.util;
 /**
  * 文字列に対する共通処理を行います。
  *
- * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>ßß
+ * @author <a href="mailto:bobtabo.buhibuhi@gmail.com">Satoshi Nagashiba</a>
  */
 public final class StringUtil {
 

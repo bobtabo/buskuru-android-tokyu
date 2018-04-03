@@ -6,7 +6,6 @@
 package org.buskuru.tokyu.activity;
 
 import java.text.MessageFormat;
-import java.util.concurrent.TimeUnit;
 
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.annotation.UseMenu;
@@ -15,6 +14,7 @@ import org.buskuru.tokyu.db.logic.TimeTableFavoritesLogic;
 import org.buskuru.tokyu.parse.TimeTableParser;
 import org.buskuru.tokyu.util.DateUtil;
 import org.buskuru.tokyu.util.MessageUtil;
+import org.buskuru.tokyu.util.TimeUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -72,10 +72,7 @@ public class TimeTableActivity extends BaseActivity implements Runnable {
 	 */
 	@Override
 	public void run() {
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-		}
+		TimeUtil.sleepSeconds(1);
 
 		handler.post(new Runnable() {
 			@Override

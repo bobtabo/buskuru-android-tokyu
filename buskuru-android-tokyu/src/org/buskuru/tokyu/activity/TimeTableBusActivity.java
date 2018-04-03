@@ -8,7 +8,6 @@ package org.buskuru.tokyu.activity;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.adapter.TimeTableBusListAdapter;
@@ -16,6 +15,7 @@ import org.buskuru.tokyu.parse.TimeTableBusListParser;
 import org.buskuru.tokyu.parse.TimeTableSelectBusParser;
 import org.buskuru.tokyu.util.CollectionUtil;
 import org.buskuru.tokyu.util.StringUtil;
+import org.buskuru.tokyu.util.TimeUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -80,10 +80,7 @@ public class TimeTableBusActivity extends BaseActivity implements Runnable, OnIt
 	 */
 	@Override
 	public void run() {
-		try {
-			TimeUnit.SECONDS.sleep(1);
-		} catch (InterruptedException e) {
-		}
+		TimeUtil.sleepSeconds(1);
 
 		handler.post(new Runnable() {
 			@Override

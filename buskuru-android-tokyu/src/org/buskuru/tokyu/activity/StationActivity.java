@@ -12,7 +12,6 @@ import java.text.MessageFormat;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import org.buskuru.tokyu.R;
 import org.buskuru.tokyu.exceptions.StationNotFoundException;
@@ -20,6 +19,7 @@ import org.buskuru.tokyu.parse.StationParser;
 import org.buskuru.tokyu.util.CollectionUtil;
 import org.buskuru.tokyu.util.MapUtil;
 import org.buskuru.tokyu.util.StringUtil;
+import org.buskuru.tokyu.util.TimeUtil;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -94,11 +94,7 @@ public class StationActivity extends BaseActivity implements OnItemClickListener
 		handler.post(new Runnable() {
 			public void run() {
 				try {
-					try {
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					TimeUtil.sleepSeconds(1);
 
 					getBusNaviApplication().getStationFromToDto().getStation().stationMapList
 							.clear();
