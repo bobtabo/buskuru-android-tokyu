@@ -5,6 +5,7 @@
  */
 package org.buskuru.tokyu.activity;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -47,6 +48,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 時刻表メイン画面を処理するアクティビティクラスです。
@@ -252,9 +256,24 @@ public class TimeTableMainActivity extends BaseActivity implements OnItemClickLi
 	 */
 	private void startTimeTableActivity(String station) {
 		try {
+			String stationEnc = URLEncoder.encode(station, "Shift-JIS");
+			
+			//バス停IDを取得します
+			String jsonUrl = getString(R.string.tokyu_time_station_info_search);
+			jsonUrl = MessageFormat.format(jsonUrl, stationEnc, String.valueOf(DateUtil.getNowValue()));
+			String json = HttpUtil.doGet(jsonUrl);
+			ObjectMapper mapper = new ObjectMapper();
+			String busId = null;
+			try {
+				JsonNode node = mapper.readTree(json);
+				busId = node.get("items").get(0).get("id").asText();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			//バス停の系統リストを取得します
 			String url = getString(R.string.tokyu_time_station_search);
-			url = MessageFormat.format(url, DateUtil.getMonth(), DateUtil.getDay(),
-					URLEncoder.encode(station, "Shift-JIS"));
+			url = MessageFormat.format(url, stationEnc, stationEnc, busId, stationEnc);
 			getWebView().loadUrl(url);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

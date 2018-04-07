@@ -525,7 +525,7 @@ public class DateUtil {
 	 */
 	@SuppressLint("SimpleDateFormat")
 	public static String getRemain(Date date) {
-		long nowTime = Calendar.getInstance().getTimeInMillis();
+		long nowTime = getNowValue();
 		long endTime = date.getTime();
 
 		long diff = endTime - nowTime;
@@ -609,7 +609,7 @@ public class DateUtil {
 	 * @return 指定分前であれば true を返します
 	 */
 	public static boolean isRemainMinute(Date date, int minute) {
-		long now = Calendar.getInstance().getTimeInMillis();
+		long now = getNowValue();
 		long target = date.getTime();
 		long diff = target - now;
 		int remain = Long.valueOf(diff / 1000).intValue();
@@ -1152,5 +1152,14 @@ public class DateUtil {
 			break;
 		}
 		return result;
+	}
+
+	/**
+	 * 現在日時を取得します。
+	 *
+	 * @return 現在日時
+	 */
+	public static long getNowValue() {
+		return Calendar.getInstance().getTimeInMillis();
 	}
 }

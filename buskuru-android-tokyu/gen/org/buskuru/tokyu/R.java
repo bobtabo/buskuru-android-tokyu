@@ -688,8 +688,8 @@ containing a value of this type.
         public static int accept=0x7f070002;
         /**  Admob 
          */
-        public static int ad_unit_id=0x7f07004d;
-        public static int ad_unit_id_interstitial=0x7f07004e;
+        public static int ad_unit_id=0x7f07004e;
+        public static int ad_unit_id_interstitial=0x7f07004f;
         /**  アプリケーション 
          */
         public static int app_name=0x7f07002d;
@@ -710,8 +710,8 @@ containing a value of this type.
         public static int cast_notification_disconnect=0x7f07000c;
         /**  アラート通知設定 
          */
-        public static int category_title=0x7f070039;
-        public static int category_title_2=0x7f07004b;
+        public static int category_title=0x7f07003a;
+        public static int category_title_2=0x7f07004c;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
         public static int common_android_wear_notification_needs_update_text=0x7f07000f;
@@ -834,27 +834,27 @@ containing a value of this type.
         /**  ﾌﾟリファレンス 
          */
         public static int key_favorite=0x7f070030;
-        public static int key_list_preference=0x7f07003d;
-        public static int key_monitor_preference=0x7f070046;
-        public static int key_notice_holiday_preference=0x7f070048;
-        public static int key_notice_preference=0x7f07003a;
-        public static int key_notice_target_preference=0x7f070044;
-        public static int key_version_preference=0x7f07004c;
-        public static int list_dialogtitle=0x7f070041;
-        public static int list_entries=0x7f070042;
-        public static int list_entryvalues=0x7f070043;
-        public static int list_summary=0x7f070040;
-        public static int list_title=0x7f07003f;
-        public static int market_url=0x7f070038;
-        public static int monitor_title=0x7f070047;
+        public static int key_list_preference=0x7f07003e;
+        public static int key_monitor_preference=0x7f070047;
+        public static int key_notice_holiday_preference=0x7f070049;
+        public static int key_notice_preference=0x7f07003b;
+        public static int key_notice_target_preference=0x7f070045;
+        public static int key_version_preference=0x7f07004d;
+        public static int list_dialogtitle=0x7f070042;
+        public static int list_entries=0x7f070043;
+        public static int list_entryvalues=0x7f070044;
+        public static int list_summary=0x7f070041;
+        public static int list_title=0x7f070040;
+        public static int market_url=0x7f070039;
+        public static int monitor_title=0x7f070048;
         public static int new_version_info=0x7f07002f;
-        public static int notice_holiday_summary=0x7f07004a;
-        public static int notice_holiday_title=0x7f070049;
-        public static int notice_summary=0x7f07003c;
-        public static int notice_target_title=0x7f070045;
-        public static int notice_title=0x7f07003b;
-        public static int play_store_url=0x7f070037;
-        public static int pref_screen=0x7f07003e;
+        public static int notice_holiday_summary=0x7f07004b;
+        public static int notice_holiday_title=0x7f07004a;
+        public static int notice_summary=0x7f07003d;
+        public static int notice_target_title=0x7f070046;
+        public static int notice_title=0x7f07003c;
+        public static int play_store_url=0x7f070038;
+        public static int pref_screen=0x7f07003f;
         public static int store_picture_message=0x7f070001;
         public static int store_picture_title=0x7f070000;
         public static int tokyu_navigation=0x7f070033;
@@ -862,9 +862,10 @@ containing a value of this type.
          */
         public static int tokyu_station=0x7f070031;
         public static int tokyu_station_search=0x7f070032;
-        public static int tokyu_time_bus_url=0x7f070036;
-        public static int tokyu_time_station_search=0x7f070034;
-        public static int tokyu_time_url=0x7f070035;
+        public static int tokyu_time_bus_url=0x7f070037;
+        public static int tokyu_time_station_info_search=0x7f070034;
+        public static int tokyu_time_station_search=0x7f070035;
+        public static int tokyu_time_url=0x7f070036;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
  Text on a button that allows a user to make a payment with Google Wallet
