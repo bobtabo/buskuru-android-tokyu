@@ -1,2 +1,2 @@
-rootProject.name='Buskuru-Android-Tokyu'
+rootProject.name='buskuru-android-tokyu'
 include ':app'
