@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<!-- トラッキングID -->
-	<string name="ga_trackingId">UA-50350412-2</string>
-	<!-- Activityの自動トラッキング -->
-	<bool name="ga_autoActivityTracking">true</bool>
-	<!-- Exceptionのトラッキング -->
-	<bool name="ga_reportUncaughtExceptions">true</bool>
-</resources>
