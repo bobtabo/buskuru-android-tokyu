@@ -8,12 +8,12 @@ android {
 
     defaultConfig {
         applicationId "org.buskuru.tokyu"
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion 28
         versionCode 24
         versionName "1.2.7"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
 
     signingConfigs {
