@@ -1,7 +1,7 @@
 # バスくる シリーズ (Archived)
 
 ※本リポジトリは、過去にGoogle Playにて公開・運用していた個人開発Androidアプリです。<br/>
-当時の検証記録や実装ロジックについては [開発ブログ](https://bobtabo.hatenadiary.org/) にて公開しています。
+当時の開発状況は [開発ブログ](https://bobtabo.hatenadiary.org/)、EclipseからAndroid Studioへの移行ナレッジは [Qiita記事](https://qiita.com/_bobtabo_/items/61967108e159743a3963) にて公開しています
 
 ---
 
